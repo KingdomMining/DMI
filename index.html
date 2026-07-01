@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DMI Technologies | Enterprise Technology Integration</title>
 <meta name="description" content="DMI Technologies — women-owned enterprise technology integrator delivering structured cabling, electronic security, nurse-call, and mobility solutions across Texas and Colorado since 2005.">
+<link rel="icon" type="image/png" href="images/logo/favicon.png">
 <script>
   (function(){
     var saved = localStorage.getItem('dmi-theme');
@@ -35,6 +36,8 @@
     --card-shadow-strong:rgba(20,40,70,.16);
     --glass:rgba(255,255,255,.7);
     --glass-border:rgba(255,255,255,.6);
+    --bg-soft-trans:rgba(244,247,251,.76);
+    --deep-trans:rgba(7,12,21,.82);
     --header-bg:rgba(9,14,24,.9);
     --hero-veil-1:rgba(4,8,14,.55);
     --hero-veil-2:rgba(4,8,14,.82);
@@ -63,6 +66,8 @@
     --card-shadow-strong:rgba(0,0,0,.6);
     --glass:rgba(16,24,40,.55);
     --glass-border:rgba(120,160,255,.16);
+    --bg-soft-trans:rgba(11,17,30,.5);
+    --deep-trans:rgba(6,10,18,.55);
     --header-bg:rgba(6,10,18,.82);
     --gold-text:#e8c77a;
     color-scheme:dark;
@@ -87,6 +92,10 @@
   ul{margin:0;padding:0;}
   ::selection{background:rgba(245,130,31,.28);}
   .container{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* whole-page embedded animated background */
+  #bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .hero,.marquee-wrap,.badges,.mini-banner,section,footer,.kpi-strip{position:relative;z-index:1;}
 
   /* scrollbar */
   ::-webkit-scrollbar{width:11px;height:11px;}
@@ -130,8 +139,13 @@
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(255,255,255,.08);
   }
-  nav{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;max-width:var(--maxw);margin:0 auto;}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--maxw);margin:0 auto;transition:padding .28s ease;}
+  header.shrink nav{padding-top:6px;padding-bottom:6px;}
+  header.shrink{box-shadow:0 8px 30px rgba(0,0,0,.35);}
   .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.18rem;color:#fff;}
+  .logo-img{height:52px;width:auto;transition:height .28s ease;}
+  header.shrink .logo-img{height:38px;}
+  .logo-fallback{display:flex;align-items:center;gap:11px;}
   .logo-mark{
     width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
     font-size:.72rem;font-weight:900;color:#1a1206;background:var(--grad-warm);flex-shrink:0;
@@ -220,13 +234,12 @@
   .marquee-wrap::after{right:0;background:linear-gradient(270deg,var(--body-bg),transparent);}
   .marquee-label{text-align:center;color:var(--gray-light);font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:700;margin-bottom:18px;}
   .marquee{display:flex;width:max-content;animation:scroll 42s linear infinite;}
-  .marquee:hover{animation-play-state:paused;}
   .marquee span{padding:0 34px;font-weight:800;font-size:1.05rem;color:var(--gray);white-space:nowrap;display:flex;align-items:center;}
   .marquee span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--orange);margin-left:34px;opacity:.5;}
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
   /* BADGES */
-  .badges{background:var(--body-bg-2);border-bottom:1px solid var(--line);}
+  .badges{background:var(--bg-soft-trans);border-bottom:1px solid var(--line);}
   .badges-inner{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:46px;padding:34px 28px;max-width:var(--maxw);margin:0 auto;}
   .badge{display:flex;align-items:center;gap:13px;color:var(--gray);font-weight:700;font-size:.85rem;}
   .badge-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:900;color:#fff;flex-shrink:0;}
@@ -251,8 +264,8 @@
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
   .section-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);}
   .section-head p{color:var(--gray);font-size:1.05rem;}
-  .bg-soft{background:var(--body-bg-2);}
-  .bg-deep{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+  .bg-soft{background:var(--bg-soft-trans);}
+  .bg-deep{background:var(--deep-trans);color:#fff;position:relative;overflow:hidden;}
   .bg-deep .section-head p{color:#aab8c8;}
 
   /* reveal (gated behind .js so content is always visible without JS) */
@@ -418,13 +431,16 @@
 </style>
 </head>
 <body>
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
 
 <header>
   <nav>
     <a href="#home" class="logo">
-      <img src="images/logo/logo.png" alt="DMI Technologies" style="height:40px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="logo-mark" style="display:none;">DMI</span>
-      <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
+      <img src="images/logo/logo.png" alt="DMI Technologies" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="logo-fallback" style="display:none;">
+        <span class="logo-mark">DMI</span>
+        <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
+      </span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
@@ -791,10 +807,12 @@
 <footer>
   <div class="container footer-grid">
     <div>
-      <div class="logo" style="margin-bottom:16px;">
-        <img src="images/logo/logo.png" alt="DMI Technologies" style="height:40px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <span class="logo-mark" style="display:none;">DMI</span>
-        <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
+      <div class="logo" style="margin-bottom:18px;">
+        <img src="images/logo/logo.png" alt="DMI Technologies" style="height:60px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="logo-fallback" style="display:none;">
+          <span class="logo-mark">DMI</span>
+          <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
+        </span>
       </div>
       <p style="max-width:290px;font-size:.9rem;">Women-owned structured cabling, electronic security, and technology integration company serving Texas and Colorado since 2005.</p>
     </div>
@@ -812,7 +830,7 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>&copy; <span id="year"></span> DMI Technologies.</span>
+    <span style="display:flex;align-items:center;gap:12px;"><img src="images/logo/logo-simple.png" alt="DMI" style="height:20px;width:auto;opacity:.85;" onerror="this.style.display='none';">&copy; <span id="year"></span> DMI Technologies.</span>
     <span>TX License #B18364 &middot; HUB / NCTRCA / WBENC Certified</span>
   </div>
 </footer>
@@ -894,9 +912,18 @@
     });
   });
 
-  // back to top
+  // back to top + shrinking header (minimize on scroll down, grow on scroll up)
   const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => backToTop.classList.toggle('show', window.scrollY > 500));
+  const headerEl = document.querySelector('header');
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    backToTop.classList.toggle('show', y > 500);
+    if(y < 80){ headerEl.classList.remove('shrink'); }
+    else if(y > lastY + 4){ headerEl.classList.add('shrink'); }
+    else if(y < lastY - 4){ headerEl.classList.remove('shrink'); }
+    lastY = y;
+  }, { passive: true });
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // scroll reveal (with failsafe)
@@ -924,20 +951,26 @@
   }, { threshold: 0.5 });
   counters.forEach(c=>cObs.observe(c));
 
-  // hero particle network
-  (function(){
-    const canvas = document.getElementById('heroCanvas');
+  // particle network — reusable for the hero canvas and the full-page background
+  function initNet(canvas, opts){
     if(!canvas) return;
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    opts = opts || {};
+    const fixed = !!opts.fixed;
+    const density = opts.density || 16;
+    const maxCount = opts.maxCount || 90;
+    const linkDist = opts.linkDist || 130;
+    const lineOp = opts.lineOpacity != null ? opts.lineOpacity : 0.16;
+    const dotOp = opts.dotOpacity != null ? opts.dotOpacity : 0.55;
     const ctx = canvas.getContext('2d');
     let w, h, pts, raf;
-    const COUNT = () => Math.min(90, Math.floor(window.innerWidth/16));
-    function resize(){
-      const r = canvas.getBoundingClientRect();
-      w = canvas.width = r.width; h = canvas.height = r.height;
-      pts = Array.from({length: COUNT()}, ()=>({
+    function size(){
+      if(fixed){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+      else { const r = canvas.getBoundingClientRect(); w = canvas.width = r.width; h = canvas.height = r.height; }
+      const count = Math.min(maxCount, Math.floor((fixed?window.innerWidth:w)/density));
+      pts = Array.from({length: count}, ()=>({
         x: Math.random()*w, y: Math.random()*h,
-        vx: (Math.random()-.5)*0.35, vy: (Math.random()-.5)*0.35
+        vx: (Math.random()-.5)*0.32, vy: (Math.random()-.5)*0.32
       }));
     }
     function draw(){
@@ -949,22 +982,25 @@
         if(p.y<0||p.y>h) p.vy*=-1;
         for(let j=i+1;j<pts.length;j++){
           const q = pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.hypot(dx,dy);
-          if(d<130){
-            ctx.strokeStyle = 'rgba(245,150,60,'+(0.16*(1-d/130))+')';
+          if(d<linkDist){
+            ctx.strokeStyle = 'rgba(245,150,60,'+(lineOp*(1-d/linkDist))+')';
             ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
           }
         }
       }
       for(const p of pts){
-        ctx.fillStyle = 'rgba(255,190,120,.55)';
-        ctx.beginPath(); ctx.arc(p.x,p.y,1.6,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle = 'rgba(255,190,120,'+dotOp+')';
+        ctx.beginPath(); ctx.arc(p.x,p.y,1.5,0,Math.PI*2); ctx.fill();
       }
       raf = requestAnimationFrame(draw);
     }
-    resize(); draw();
-    window.addEventListener('resize', ()=>{ cancelAnimationFrame(raf); resize(); draw(); });
-  })();
+    size(); draw();
+    let rt;
+    window.addEventListener('resize', ()=>{ clearTimeout(rt); rt = setTimeout(()=>{ cancelAnimationFrame(raf); size(); draw(); }, 150); });
+  }
+  initNet(document.getElementById('heroCanvas'), { maxCount:90, density:16, lineOpacity:0.16, dotOpacity:0.55 });
+  initNet(document.getElementById('bgCanvas'), { fixed:true, maxCount:74, density:26, linkDist:150, lineOpacity:0.14, dotOpacity:0.42 });
 </script>
 </body>
 </html>
