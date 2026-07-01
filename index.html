@@ -3,22 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DMI Technologies | Structured Cabling &amp; Technology Integration</title>
-<meta name="description" content="DMI Technologies — women-owned structured cabling, electronic security, nurse-call and technology integration company serving Texas and Colorado since 2005.">
+<title>DMI Technologies | Enterprise Technology Integration</title>
+<meta name="description" content="DMI Technologies — women-owned enterprise technology integrator delivering structured cabling, electronic security, nurse-call, and mobility solutions across Texas and Colorado since 2005.">
 <style>
   :root{
-    --navy:#0b1622;
-    --navy-2:#111f30;
+    --navy:#070c15;
+    --navy-2:#0d1526;
+    --navy-3:#131f35;
     --orange:#f5821f;
     --orange-dark:#d96e10;
-    --teal:#00b388;
+    --gold:#c9a24b;
     --blue:#2e7ab5;
-    --ink:#1c2733;
+    --ink:#151d27;
     --gray:#5b6b7a;
+    --gray-light:#8a97a5;
     --line:#e4e9ee;
-    --bg-soft:#f4f6f9;
+    --bg-soft:#f5f7fa;
     --white:#ffffff;
-    --radius:14px;
+    --radius:16px;
+    --radius-sm:10px;
+    --maxw:1240px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -27,116 +31,104 @@
     font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
     color:var(--ink);
     background:var(--white);
-    line-height:1.6;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3,h4{
     font-family:"Segoe UI",Arial,sans-serif;
     font-weight:800;
-    letter-spacing:-0.01em;
+    letter-spacing:-0.015em;
     margin:0 0 .5em;
   }
   p{margin:0 0 1em;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
-  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  ul{margin:0;padding:0;}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
   .eyebrow{
     text-transform:uppercase;
-    letter-spacing:.14em;
-    font-size:.75rem;
-    font-weight:700;
+    letter-spacing:.16em;
+    font-size:.72rem;
+    font-weight:800;
     color:var(--orange);
-    margin-bottom:.75em;
-    display:block;
+    margin-bottom:.9em;
+    display:inline-block;
+  }
+  .placeholder-flag{
+    display:inline-block;background:rgba(201,162,75,.14);color:#8a6d1f;
+    border:1px solid rgba(201,162,75,.4);font-size:.68rem;font-weight:800;
+    text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:20px;
+    margin-bottom:14px;
   }
   .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:.5em;
-    padding:.85em 1.6em;
-    border-radius:8px;
-    font-weight:700;
-    font-size:.95rem;
-    cursor:pointer;
-    border:2px solid transparent;
+    display:inline-flex;align-items:center;gap:.5em;
+    padding:.9em 1.7em;border-radius:8px;font-weight:700;font-size:.95rem;
+    cursor:pointer;border:2px solid transparent;
     transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
   }
   .btn:hover{transform:translateY(-2px);}
   .btn-orange{background:var(--orange);color:#fff;}
-  .btn-orange:hover{background:var(--orange-dark);box-shadow:0 10px 24px rgba(245,130,31,.35);}
-  .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.6);}
+  .btn-orange:hover{background:var(--orange-dark);box-shadow:0 12px 28px rgba(245,130,31,.35);}
+  .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.55);}
   .btn-outline:hover{background:rgba(255,255,255,.12);}
-  .btn-blue{background:var(--blue);color:#fff;}
-  .btn-blue:hover{background:#25638f;box-shadow:0 10px 24px rgba(46,122,181,.3);}
+  .btn-blue{background:var(--blue);color:#fff;border:none;}
+  .btn-blue:hover{background:#25638f;box-shadow:0 12px 28px rgba(46,122,181,.3);}
   .btn-dark-outline{background:transparent;color:var(--navy);border-color:var(--navy);}
   .btn-dark-outline:hover{background:var(--navy);color:#fff;}
+  .btn-sm{padding:.55em 1.1em;font-size:.85rem;}
 
   /* NAV */
   header{
     position:sticky;top:0;z-index:1000;
-    background:rgba(11,22,34,.92);
-    backdrop-filter:blur(8px);
+    background:rgba(7,12,21,.97);
     border-bottom:1px solid rgba(255,255,255,.08);
   }
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;max-width:1180px;margin:0 auto;
-  }
-  .logo{
-    display:flex;align-items:center;gap:10px;
-    font-weight:800;font-size:1.25rem;color:#fff;
-  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--maxw);margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:#fff;}
   .logo-mark{
-    width:38px;height:38px;border-radius:50%;
-    border:2px solid var(--orange);
-    display:flex;align-items:center;justify-content:center;
-    font-size:.75rem;font-weight:900;color:var(--orange);
-    position:relative;
-    background:conic-gradient(from 220deg, rgba(245,130,31,.15), transparent 60%);
+    width:38px;height:38px;border-radius:50%;border:2px solid var(--orange);
+    display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:var(--orange);
+    position:relative;background:conic-gradient(from 220deg, rgba(245,130,31,.18), transparent 60%);
+    flex-shrink:0;
   }
   .logo-mark::after{
-    content:"";
-    position:absolute;inset:-6px;
-    border:1px solid rgba(245,130,31,.4);
-    border-radius:50%;
-    border-top-color:transparent;
-    border-left-color:transparent;
-    transform:rotate(45deg);
+    content:"";position:absolute;inset:-6px;border:1px solid rgba(245,130,31,.4);border-radius:50%;
+    border-top-color:transparent;border-left-color:transparent;transform:rotate(45deg);
   }
-  .logo small{display:block;font-size:.55rem;letter-spacing:.2em;font-weight:600;color:#9fb0c0;}
-  .nav-links{display:flex;align-items:center;gap:30px;}
-  .nav-links a{
-    color:#dbe4ec;font-size:.92rem;font-weight:600;
-    padding:8px 2px;border-bottom:2px solid transparent;
-    transition:color .15s, border-color .15s;
+  .logo small{display:block;font-size:.52rem;letter-spacing:.2em;font-weight:600;color:#93a4b6;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links > a,.has-dropdown > a{color:#dbe4ec;font-size:.9rem;font-weight:600;padding:8px 2px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap;}
+  .nav-links > a:hover,.has-dropdown > a:hover{color:#fff;border-bottom-color:var(--orange);}
+  .has-dropdown{position:relative;}
+  .dropdown{
+    position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    background:var(--navy-2);border:1px solid rgba(255,255,255,.1);border-radius:12px;
+    padding:10px;min-width:220px;display:none;box-shadow:0 20px 40px rgba(0,0,0,.4);margin-top:14px;
   }
-  .nav-links a:hover{color:#fff;border-bottom-color:var(--orange);}
+  .has-dropdown:hover .dropdown{display:block;}
+  .dropdown a{display:block;padding:10px 14px;border-radius:8px;color:#cfd9e2;font-size:.87rem;font-weight:600;}
+  .dropdown a:hover{background:rgba(245,130,31,.12);color:#fff;}
   .nav-cta{display:flex;gap:12px;align-items:center;}
   .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;}
-
-  @media(max-width:920px){
+  @media(max-width:980px){
     .nav-links{
-      position:fixed;top:66px;left:0;right:0;bottom:0;
-      background:var(--navy-2);
-      flex-direction:column;align-items:flex-start;
-      padding:24px;gap:18px;
-      transform:translateX(-100%);
-      transition:transform .25s ease;
-      overflow-y:auto;
+      position:fixed;top:66px;left:0;right:0;bottom:0;background:var(--navy-2);
+      flex-direction:column;align-items:flex-start;padding:24px;gap:6px;
+      transform:translateX(-100%);transition:transform .25s ease;overflow-y:auto;
     }
     .nav-links.open{transform:translateX(0);}
+    .nav-links > a{width:100%;padding:12px 4px;}
+    .dropdown{position:static;transform:none;display:none;box-shadow:none;margin:0 0 6px 12px;border:none;background:transparent;}
+    .has-dropdown.open .dropdown{display:block;}
     .nav-cta{display:none;}
     .nav-toggle{display:block;}
   }
 
   /* HERO */
   .hero{
-    position:relative;
-    min-height:640px;
-    display:flex;align-items:center;
-    color:#fff;
-    overflow:hidden;
+    position:relative;min-height:680px;display:flex;align-items:center;color:#fff;overflow:hidden;
     background:
-      linear-gradient(180deg, rgba(6,12,20,.55), rgba(6,12,20,.75)),
+      linear-gradient(180deg, rgba(4,8,14,.6), rgba(4,8,14,.85)),
       linear-gradient(200deg,#3c4c5e 0%, #7a8ea1 35%, #b9c6d1 55%, #8194a5 75%, #3c4c5e 100%);
   }
   .hero-clouds{
@@ -147,8 +139,7 @@
       radial-gradient(ellipse 70% 45% at 85% 30%, rgba(255,255,255,.2), transparent 60%);
   }
   .skyline{
-    position:absolute;left:0;right:0;bottom:0;height:46%;
-    background:#0b1622;
+    position:absolute;left:0;right:0;bottom:0;height:44%;background:#070c15;
     clip-path:polygon(
       0% 100%, 0% 60%, 3% 60%, 3% 40%, 6% 40%, 6% 55%, 10% 55%, 10% 30%, 13% 30%,
       13% 50%, 17% 50%, 17% 20%, 20% 20%, 20% 10%, 23% 10%, 23% 45%, 27% 45%,
@@ -158,173 +149,168 @@
       75% 50%, 79% 50%, 79% 12%, 83% 12%, 83% 40%, 87% 40%, 87% 28%, 91% 28%,
       91% 55%, 95% 55%, 95% 45%, 100% 45%, 100% 100%
     );
-    opacity:.9;
+    opacity:.92;
   }
-  .hero-inner{position:relative;z-index:2;padding:100px 24px 60px;max-width:1180px;margin:0 auto;text-align:left;}
-  .hero h1{font-size:clamp(2rem,4.4vw,3.4rem);max-width:820px;text-shadow:0 4px 18px rgba(0,0,0,.35);}
-  .hero-mission{
-    display:inline-block;margin:18px 0 28px;
-    background:rgba(255,255,255,.14);
-    border:1px solid rgba(255,255,255,.25);
-    backdrop-filter:blur(6px);
-    padding:18px 26px;border-radius:10px;
-    max-width:640px;
-  }
-  .hero-mission strong{color:var(--orange);display:block;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
-  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-inner{position:relative;z-index:2;padding:120px 28px 0;max-width:var(--maxw);margin:0 auto;}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.6rem);max-width:860px;text-shadow:0 4px 20px rgba(0,0,0,.4);}
+  .hero-sub{max-width:600px;color:#dce4ea;font-size:1.08rem;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin:26px 0 56px;}
 
-  /* BADGES STRIP */
-  .badges{background:var(--white);border-bottom:1px solid var(--line);}
-  .badges-inner{
-    display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
-    gap:48px;padding:34px 24px;max-width:1180px;margin:0 auto;
+  .hero-kpis{
+    position:relative;z-index:2;
+    background:rgba(10,16,26,.72);border-top:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(6px);
   }
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:var(--maxw);margin:0 auto;padding:26px 28px;text-align:center;}
+  .kpi-grid div{border-right:1px solid rgba(255,255,255,.12);}
+  .kpi-grid div:last-child{border-right:none;}
+  .kpi-num{font-size:1.8rem;font-weight:800;color:var(--orange);}
+  .kpi-label{font-size:.75rem;color:#a9b7c4;text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-top:4px;}
+  @media(max-width:800px){.kpi-grid{grid-template-columns:repeat(2,1fr);row-gap:20px;}.kpi-grid div{border-right:none;}}
+
+  /* MARQUEE */
+  .marquee-wrap{background:var(--white);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;}
+  .marquee-label{text-align:center;color:var(--gray-light);font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:16px;}
+  .marquee{display:flex;width:max-content;animation:scroll 38s linear infinite;}
+  .marquee:hover{animation-play-state:paused;}
+  .marquee span{
+    padding:0 36px;font-weight:800;font-size:1.05rem;color:var(--gray);white-space:nowrap;
+    display:flex;align-items:center;letter-spacing:.01em;
+  }
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* CERT BADGES */
+  .badges{background:var(--bg-soft);border-bottom:1px solid var(--line);}
+  .badges-inner{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:48px;padding:34px 28px;max-width:var(--maxw);margin:0 auto;}
   .badge{display:flex;align-items:center;gap:12px;color:var(--gray);font-weight:700;font-size:.85rem;}
-  .badge-icon{
-    width:46px;height:46px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:.7rem;font-weight:900;color:#fff;flex-shrink:0;
-  }
+  .badge-icon{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:900;color:#fff;flex-shrink:0;}
   .badge-icon.hub{background:#b5202a;}
   .badge-icon.nctrca{background:#2b2e83;}
   .badge-icon.women{background:linear-gradient(135deg,#e0518c,#7b5ee0);}
-  .badge span{line-height:1.25;}
-  .badge small{display:block;font-weight:500;color:#8b98a5;font-size:.75rem;}
+  .badge span small{display:block;font-weight:500;color:#8b98a5;font-size:.75rem;}
 
-  /* SECTION generic */
-  section{padding:96px 0;}
-  .section-head{max-width:680px;margin-bottom:48px;}
+  section{padding:104px 0;}
+  .section-head{max-width:700px;margin-bottom:52px;}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
   .bg-soft{background:var(--bg-soft);}
+  .bg-navy{background:var(--navy);color:#fff;}
 
   /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start;}
+  .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start;}
   .about-grid p{color:var(--gray);font-size:1.05rem;}
   .tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
-  .tab-btn{
-    padding:.7em 1.3em;border-radius:8px;border:1px solid var(--line);
-    background:#fff;color:var(--ink);font-weight:700;cursor:pointer;font-size:.9rem;
-    transition:background .15s,color .15s;
-  }
-  .tab-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);}
-  .tab-panel{
-    display:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px;color:var(--gray);box-shadow:0 8px 24px rgba(20,40,60,.05);
-  }
+  .tab-btn{padding:.7em 1.3em;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;cursor:pointer;font-size:.88rem;transition:background .15s,color .15s;}
+  .tab-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .tab-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;color:var(--gray);box-shadow:0 10px 26px rgba(20,40,60,.06);}
   .tab-panel.active{display:block;}
-  .license-strip{
-    margin-top:40px;background:var(--teal);color:#fff;border-radius:var(--radius);
-    padding:32px;text-align:center;
-  }
-  .license-strip p{margin:0;font-weight:600;}
-  .license-strip .num{font-weight:800;margin-top:6px;}
+  .license-strip{margin-top:44px;background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:var(--radius);padding:34px;text-align:center;}
+  .license-strip p{margin:0;font-weight:600;color:#dce4ea;}
+  .license-strip .num{font-weight:800;margin-top:6px;color:var(--orange);}
 
-  /* SERVICES */
-  .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
-  .service-card{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:28px;transition:transform .2s ease, box-shadow .2s ease;
+  /* INDUSTRIES */
+  .industry-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
+  .industry-tab{
+    flex:1;min-width:150px;padding:16px 18px;border-radius:12px;border:1px solid var(--line);
+    background:#fff;cursor:pointer;text-align:left;transition:border-color .15s, box-shadow .15s;
   }
-  .service-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(20,40,60,.08);}
-  .service-icon{
-    width:48px;height:48px;border-radius:10px;background:rgba(245,130,31,.12);
-    color:var(--orange);display:flex;align-items:center;justify-content:center;
-    font-size:1.3rem;font-weight:800;margin-bottom:16px;
-  }
-  .service-card h3{font-size:1.05rem;}
-  .service-card p{color:var(--gray);font-size:.92rem;margin:0;}
+  .industry-tab:hover{box-shadow:0 8px 20px rgba(20,40,60,.08);}
+  .industry-tab.active{border-color:var(--orange);box-shadow:0 8px 20px rgba(245,130,31,.15);}
+  .industry-tab .num{font-size:.72rem;font-weight:800;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;}
+  .industry-tab h4{font-size:1.02rem;margin:4px 0 0;}
+  .industry-panel{display:none;}
+  .industry-panel.active{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;background:var(--bg-soft);border-radius:var(--radius);padding:40px;}
+  .industry-panel p{color:var(--gray);}
+  .mini-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .mini-project{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .mini-thumb{height:110px;background:linear-gradient(135deg,#5b7a91,#2e4356);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-size:.65rem;font-weight:700;text-align:center;padding:8px;text-transform:uppercase;letter-spacing:.04em;}
+  .mini-project-info{padding:12px 14px;}
+  .mini-project-info h5{margin:0 0 2px;font-size:.85rem;}
+  .mini-project-info span{color:var(--gray-light);font-size:.75rem;}
+  @media(max-width:900px){.industry-panel.active{grid-template-columns:1fr;}.mini-projects{grid-template-columns:1fr 1fr;}}
 
-  /* STATS */
-  .stats{background:var(--navy);color:#fff;}
-  .stats-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;
+  /* TEAM */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;}
+  .team-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;transition:transform .2s, box-shadow .2s;}
+  .team-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,40,60,.1);}
+  .team-avatar{
+    width:88px;height:88px;border-radius:50%;margin:0 auto 18px;
+    background:linear-gradient(135deg,var(--navy),var(--navy-3));
+    display:flex;align-items:center;justify-content:center;color:var(--orange);font-weight:800;font-size:1.4rem;
+    border:3px solid rgba(245,130,31,.25);
   }
-  .stat-num{font-size:2.6rem;font-weight:800;color:var(--orange);}
-  .stat-label{color:#b8c4d0;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:6px;}
-  @media(max-width:800px){.stats-grid{grid-template-columns:repeat(2,1fr);row-gap:36px;}}
+  .team-card h4{font-size:1.02rem;margin:0 0 2px;}
+  .team-role{color:var(--orange);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;}
+  .team-card p{color:var(--gray);font-size:.85rem;margin:0;}
+
+  /* PARTNERS */
+  .partner-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+  .partner-group{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;}
+  .partner-group h4{font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);border-bottom:2px solid var(--orange);padding-bottom:12px;margin-bottom:20px;}
+  .partner-list{display:flex;flex-direction:column;gap:0;}
+  .partner-list li{list-style:none;padding:13px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:700;font-size:.95rem;}
+  .partner-list li:last-child{border-bottom:none;}
+  @media(max-width:900px){.partner-groups{grid-template-columns:1fr;}}
 
   /* PROJECTS */
-  .project-scroller{
-    display:flex;gap:24px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;
-  }
-  .project-scroller::-webkit-scrollbar{height:8px;}
-  .project-scroller::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px;}
-  .project-card{
-    scroll-snap-align:start;
-    flex:0 0 300px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;text-decoration:none;color:var(--ink);
-    box-shadow:0 6px 18px rgba(20,40,60,.05);
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .project-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(20,40,60,.12);}
-  .project-thumb{
-    height:170px;
-    background:linear-gradient(135deg,#5b7a91,#2e4356);
-    display:flex;align-items:center;justify-content:center;
-    color:rgba(255,255,255,.85);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-    position:relative;
-  }
-  .project-thumb::after{content:"↗";position:absolute;top:10px;right:12px;font-size:1.1rem;color:#fff;opacity:.7;}
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .filter-btn{padding:.6em 1.3em;border-radius:24px;border:1px solid var(--line);background:#fff;color:var(--gray);font-weight:700;font-size:.85rem;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+  .filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;}
+  .project-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 18px rgba(20,40,60,.05);transition:transform .2s ease, box-shadow .2s ease;}
+  .project-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(20,40,60,.12);}
+  .project-thumb{height:160px;background:linear-gradient(135deg,#5b7a91,#2e4356);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-align:center;padding:10px;}
+  .project-tag{position:absolute;margin:12px;background:rgba(245,130,31,.92);color:#fff;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:20px;}
+  .project-thumb-wrap{position:relative;}
   .project-info{padding:18px 20px;}
   .project-info h4{margin:0 0 4px;font-size:1rem;}
   .project-info span{color:var(--gray);font-size:.85rem;}
-  .project-note{color:var(--gray);font-size:.85rem;margin-top:16px;}
+  .project-note{color:var(--gray-light);font-size:.82rem;margin-top:28px;}
+
+  /* CAREERS */
+  .career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+  .career-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:24px;}
+  .career-card h4{font-size:1.05rem;margin:0 0 8px;}
+  .career-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+  .career-tags span{background:var(--bg-soft);color:var(--gray);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+  .career-loc{color:var(--gray-light);font-size:.85rem;margin-bottom:12px;}
+  .career-card a{color:var(--blue);font-weight:700;font-size:.88rem;}
 
   /* CONTACT */
   .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
   .contact-info h3{font-size:1.4rem;}
   .contact-list{list-style:none;margin:24px 0 0;padding:0;}
-  .contact-list li{
-    display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;color:var(--gray);
-  }
-  .contact-list .ico{
-    width:42px;height:42px;border-radius:10px;background:rgba(46,122,181,.1);
-    color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;
-  }
+  .contact-list li{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;color:var(--gray);}
+  .contact-list .ico{width:42px;height:42px;border-radius:10px;background:rgba(46,122,181,.1);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:.78rem;}
   .contact-list strong{display:block;color:var(--ink);}
-  form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:0 8px 24px rgba(20,40,60,.05);}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:0 10px 26px rgba(20,40,60,.06);}
+  .form-tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--bg-soft);padding:6px;border-radius:10px;}
+  .form-tab{flex:1;text-align:center;padding:.65em 1em;border-radius:8px;font-weight:700;font-size:.85rem;color:var(--gray);cursor:pointer;border:none;background:none;}
+  .form-tab.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(20,40,60,.1);}
+  form{display:none;}
+  form.active{display:block;}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   label{display:block;font-size:.85rem;font-weight:700;margin:16px 0 6px;color:var(--ink);}
   form .form-row label{margin-top:0;}
-  input,select,textarea{
-    width:100%;padding:.75em .9em;border:1px solid var(--line);border-radius:8px;
-    background:#f7f9fb;font-size:.95rem;font-family:inherit;color:var(--ink);
-  }
+  input,select,textarea{width:100%;padding:.75em .9em;border:1px solid var(--line);border-radius:8px;background:#f7f9fb;font-size:.95rem;font-family:inherit;color:var(--ink);}
   input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff;}
-  textarea{resize:vertical;min-height:110px;}
+  textarea{resize:vertical;min-height:90px;}
   form .btn{margin-top:22px;width:100%;justify-content:center;border:none;}
-
-  .service-ticket-cta{
-    margin-top:28px;padding:22px;border-radius:var(--radius);
-    background:var(--bg-soft);border:1px dashed #c7d2dc;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-  }
-  .service-ticket-cta p{margin:0;color:var(--gray);font-size:.9rem;}
-
-  @media(max-width:900px){
-    .about-grid,.contact-wrap{grid-template-columns:1fr;}
-    .form-row{grid-template-columns:1fr;}
-  }
+  .char-count{text-align:right;font-size:.78rem;color:var(--gray-light);margin-top:4px;}
+  @media(max-width:900px){.about-grid,.contact-wrap{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.partner-groups{grid-template-columns:1fr;}}
 
   /* FOOTER */
-  footer{background:var(--navy);color:#b8c4d0;padding:56px 0 24px;}
+  footer{background:var(--navy);color:#b8c4d0;padding:64px 0 24px;}
   .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
-  footer h4{color:#fff;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px;}
+  footer h4{color:#fff;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px;}
   footer ul{list-style:none;margin:0;padding:0;}
   footer li{margin-bottom:10px;font-size:.9rem;}
   footer a:hover{color:#fff;}
-  .footer-bottom{
-    border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7f8fa0;
-  }
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:44px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:#7f8fa0;}
   @media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr;}}
 
   .back-to-top{
-    position:fixed;bottom:24px;right:24px;
-    width:46px;height:46px;border-radius:50%;
-    background:var(--orange);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.2rem;box-shadow:0 8px 20px rgba(0,0,0,.25);
+    position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 8px 20px rgba(0,0,0,.25);
     opacity:0;pointer-events:none;transition:opacity .2s;z-index:900;
   }
   .back-to-top.show{opacity:1;pointer-events:auto;}
@@ -336,19 +322,33 @@
   <nav>
     <a href="#home" class="logo">
       <span class="logo-mark">DMI</span>
-      <span>DMI Technologies<small>TECHNOLOGY&nbsp;INTEGRATION</small></span>
+      <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
-      <a href="#about">Company</a>
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
+      <div class="has-dropdown">
+        <a href="#about">Company &#9662;</a>
+        <div class="dropdown">
+          <a href="#about">About Us</a>
+          <a href="#team">Leadership Team</a>
+          <a href="#careers">Careers</a>
+        </div>
+      </div>
+      <div class="has-dropdown">
+        <a href="#industries">Industries &#9662;</a>
+        <div class="dropdown">
+          <a href="#industries" data-industry="commercial">Commercial</a>
+          <a href="#industries" data-industry="healthcare">Healthcare</a>
+          <a href="#industries" data-industry="education">Education</a>
+          <a href="#industries" data-industry="multitenant">Multi-Tenant</a>
+        </div>
+      </div>
+      <a href="#partners">Partners</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-blue" style="padding:.6em 1.2em;">Contact Us</a>
-      <a href="#service-ticket" class="btn btn-orange" style="padding:.6em 1.2em;">Schedule Service</a>
+      <a href="#contact" data-form="ticket" class="btn btn-orange btn-sm open-ticket">Schedule Service</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
   </nav>
@@ -359,17 +359,30 @@
   <div class="skyline"></div>
   <div class="hero-inner">
     <span class="eyebrow" style="color:#ffb066;">Serving Texas &amp; Colorado Since 2005</span>
-    <h1>Technology Integration &amp; Structured Cabling Installation Since 2005.</h1>
-    <div class="hero-mission">
-      <strong>Our Mission</strong>
-      Provide the highest quality of connectivity through innovative solutions.
-    </div>
+    <h1>Enterprise Technology Integration for Mission-Critical Facilities.</h1>
+    <p class="hero-sub">DMI Technologies designs, installs, and services structured cabling, electronic security, nurse-call, and mobility infrastructure for healthcare systems, universities, and commercial developers who can't afford downtime.</p>
     <div class="hero-ctas">
-      <a href="#service-ticket" class="btn btn-orange">Schedule Service</a>
-      <a href="#contact" class="btn btn-outline">Contact Us</a>
+      <a href="#contact" data-form="ticket" class="btn btn-orange open-ticket">Schedule Service</a>
+      <a href="#contact" class="btn btn-outline">Talk to Sales</a>
+    </div>
+  </div>
+  <div class="hero-kpis">
+    <div class="kpi-grid">
+      <div><div class="kpi-num">2005</div><div class="kpi-label">Founded</div></div>
+      <div><div class="kpi-num">85+</div><div class="kpi-label">Skilled Professionals</div></div>
+      <div><div class="kpi-num">2</div><div class="kpi-label">States: TX &amp; CO</div></div>
+      <div><div class="kpi-num">4</div><div class="kpi-label">Core Markets</div></div>
     </div>
   </div>
 </section>
+
+<div class="marquee-wrap">
+  <div class="marquee-label">Trusted by leading healthcare systems, universities &amp; developers</div>
+  <div class="marquee" id="marquee">
+    <span>UT Southwestern</span><span>Cook Children's Medical Center</span><span>Children's Medical Center</span><span>Hotel Drover</span><span>The Sinclair Hotel</span><span>Kindred Resort</span><span>Transplace</span><span>AMLI Fountain Place</span><span>Eagle County Regional Airport</span><span>Coryell Health</span>
+    <span>UT Southwestern</span><span>Cook Children's Medical Center</span><span>Children's Medical Center</span><span>Hotel Drover</span><span>The Sinclair Hotel</span><span>Kindred Resort</span><span>Transplace</span><span>AMLI Fountain Place</span><span>Eagle County Regional Airport</span><span>Coryell Health</span>
+  </div>
+</div>
 
 <div class="badges">
   <div class="badges-inner">
@@ -392,9 +405,9 @@
   <div class="container about-grid">
     <div>
       <span class="eyebrow">Company</span>
-      <h2>About DMI Technologies</h2>
+      <h2>Two Decades of Connectivity Expertise</h2>
       <p>DMI Technologies was founded in 2005 as a women-owned technology company, specializing in structured cabling installations. Since then, DMI has continually expanded its offering, now also providing electronic security, nurse-call, mobility solutions, and patient alarm management.</p>
-      <p>From certified technicians to our Project Management and Sales teams, every employee at DMI is passionate about leveraging technology to enhance safety, security, and communication in healthcare and commercial environments.</p>
+      <p>From certified technicians to our Project Management and Sales teams, every employee at DMI is passionate about leveraging technology to enhance safety, security, and communication in healthcare and commercial environments — and every project is backed by our Texas DPS license.</p>
     </div>
     <div>
       <div class="tabs">
@@ -421,34 +434,127 @@
   </div>
 </section>
 
-<section class="bg-soft" id="services">
+<section class="bg-soft" id="industries">
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow">What We Do</span>
-      <h2>Commercial Solutions</h2>
-      <p style="color:var(--gray);">Commercial buildings are as unique as the companies that use them, and our team has expert knowledge in deployment of structured cabling, security, and technology solutions to fit any use case. DMI Technologies has helped many developers with design assist and full implementations of communications, multi-media, distributed antenna systems, and security solutions.</p>
-      <p style="color:var(--gray);">Our team has over 5 decades of combined experience in connectivity solutions for a multitude of commercial building types. We offer solutions to enhance and protect your workspace &mdash; ask us how we can help get your new development or remodel up to speed with the latest technology.</p>
+      <h2>Solutions By Industry</h2>
+      <p style="color:var(--gray);">Every facility type has different requirements. We tailor structured cabling, security, and communications infrastructure to the building types we know best.</p>
     </div>
-    <div class="service-grid">
-      <div class="service-card"><div class="service-icon">SC</div><h3>Structured Cabling</h3><p>Design, installation, and servicing of enterprise-grade cabling infrastructure for new construction and remodels.</p></div>
-      <div class="service-card"><div class="service-icon">ES</div><h3>Electronic Security</h3><p>Access control, surveillance, and integrated security systems built to protect people and property.</p></div>
-      <div class="service-card"><div class="service-icon">NC</div><h3>Nurse-Call Systems</h3><p>Reliable, code-compliant nurse-call and patient alarm management for healthcare facilities.</p></div>
-      <div class="service-card"><div class="service-icon">MS</div><h3>Mobility Solutions</h3><p>Distributed antenna systems (DAS) and wireless infrastructure for seamless in-building connectivity.</p></div>
-      <div class="service-card"><div class="service-icon">DA</div><h3>Design Assist</h3><p>Partnering with developers early in the process to plan communications and multi-media infrastructure.</p></div>
-      <div class="service-card"><div class="service-icon">PM</div><h3>Project Management</h3><p>Full-service project management from initial design through final implementation and support.</p></div>
+
+    <div class="industry-tabs">
+      <button class="industry-tab active" data-ind="commercial"><div class="num">01</div><h4>Commercial</h4></button>
+      <button class="industry-tab" data-ind="healthcare"><div class="num">02</div><h4>Healthcare</h4></button>
+      <button class="industry-tab" data-ind="education"><div class="num">03</div><h4>Education</h4></button>
+      <button class="industry-tab" data-ind="multitenant"><div class="num">04</div><h4>Multi-Tenant</h4></button>
     </div>
-    <div style="text-align:center;margin-top:40px;">
-      <a href="#contact" class="btn btn-blue">Contact Sales</a>
+
+    <div class="industry-panel active" id="ind-commercial">
+      <div>
+        <h3>Commercial Solutions</h3>
+        <p>Commercial buildings are as unique as the companies that use them, and our team has expert knowledge in deployment of structured cabling, security, and technology solutions to fit any use case. DMI has helped many developers with design assist and full implementations of communications, multi-media, distributed antenna systems, and security solutions.</p>
+        <p>Our team has over 5 decades of combined experience in connectivity solutions for a multitude of commercial building types &mdash; enhancing and protecting workspaces while increasing efficiency.</p>
+        <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
+      </div>
+      <div class="mini-projects">
+        <div class="mini-project"><div class="mini-thumb">Hotel Drover</div><div class="mini-project-info"><h5>Hotel Drover</h5><span>Fort Worth, TX</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">Kindred Resort</div><div class="mini-project-info"><h5>Kindred Resort</h5><span>Keystone, CO</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">Sinclair Hotel</div><div class="mini-project-info"><h5>The Sinclair Hotel</h5><span>Fort Worth, TX</span></div></div>
+      </div>
+    </div>
+
+    <div class="industry-panel" id="ind-healthcare">
+      <div>
+        <h3>Healthcare Solutions</h3>
+        <p>DMI provides design, install, and maintenance for a wide portfolio of products suitable for healthcare environments including Nurse-Call, Voice &amp; Data Cabling, Alarm Management, Real-Time Location Systems, Synchronized Temperature Sensing, and Mobility products.</p>
+        <p>Contact our sales representatives for more info today!</p>
+        <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
+      </div>
+      <div class="mini-projects">
+        <div class="mini-project"><div class="mini-thumb">UT Southwestern</div><div class="mini-project-info"><h5>UT Southwestern</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">Cook Children's</div><div class="mini-project-info"><h5>Cook Children's Medical Center</h5><span>Fort Worth, TX</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">Coryell Health</div><div class="mini-project-info"><h5>Coryell Health</h5><span>Gatesville, TX</span></div></div>
+      </div>
+    </div>
+
+    <div class="industry-panel" id="ind-education">
+      <div>
+        <h3>Education Solutions</h3>
+        <p>Education buildings have several important requirements. From security and access control to active shooter detection, technology designed to keep students safe is becoming mainstream in today's world.</p>
+        <p>DMI understands the challenges brought on by education institutions, and we have experience working with many top-named universities. Contact us today to find out how we can help with your campus needs.</p>
+        <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
+      </div>
+      <div class="mini-projects">
+        <div class="mini-project"><div class="mini-thumb">Lewisville ISD</div><div class="mini-project-info"><h5>Lewisville ISD Security Renovation</h5><span>Multiple Locations</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">AISD Seguin HS</div><div class="mini-project-info"><h5>AISD Seguin High School</h5><span>Arlington, TX</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">UTD Math &amp; Science</div><div class="mini-project-info"><h5>UTD Math &amp; Science</h5><span>Dallas, TX</span></div></div>
+      </div>
+    </div>
+
+    <div class="industry-panel" id="ind-multitenant">
+      <div>
+        <h3>Multi-Tenant Solutions</h3>
+        <p>The communications design plan for a multi-tenant building is vital to the success of the property. A mistake during this phase could lead to disastrous connectivity issues and costly retro-fit work for tenants. DMI has helped many developers with design assist and full implementations of communications, multi-media, distributed antenna systems, and security solutions.</p>
+        <p>Our team offers advancements in technology that increase sellable space and reduce operating expense for the entire building.</p>
+        <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
+      </div>
+      <div class="mini-projects">
+        <div class="mini-project"><div class="mini-thumb">1401 Elm</div><div class="mini-project-info"><h5>1401 Elm</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">AMLI Fountain Place</div><div class="mini-project-info"><h5>AMLI Fountain Place</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><div class="mini-thumb">Touchmark</div><div class="mini-project-info"><h5>Touchmark at Emerald Lake</h5><span>McKinney, TX</span></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="stats" id="industries">
-  <div class="container stats-grid">
-    <div><div class="stat-num">2005</div><div class="stat-label">Year Founded</div></div>
-    <div><div class="stat-num">85+</div><div class="stat-label">Skilled Employees</div></div>
-    <div><div class="stat-num">2</div><div class="stat-label">States Served: TX &amp; CO</div></div>
-    <div><div class="stat-num">4</div><div class="stat-label">Core Markets: Healthcare, Higher Ed, K-12, Multi-Tenant</div></div>
+<section id="team">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Leadership</span>
+      <h2>Meet the Team</h2>
+      <p style="color:var(--gray);">The people behind DMI's 20 years of connectivity solutions.</p>
+      <span class="placeholder-flag">Placeholder profiles &mdash; replace with real names, titles &amp; photos</span>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-avatar">CEO</div><h4>Add Name</h4><div class="team-role">Founder &amp; CEO</div><p>Bio coming soon.</p></div>
+      <div class="team-card"><div class="team-avatar">COO</div><h4>Add Name</h4><div class="team-role">President &amp; COO</div><p>Bio coming soon.</p></div>
+      <div class="team-card"><div class="team-avatar">VP</div><h4>Add Name</h4><div class="team-role">VP of Sales</div><p>Bio coming soon.</p></div>
+      <div class="team-card"><div class="team-avatar">DIR</div><h4>Add Name</h4><div class="team-role">Director of Field Operations</div><p>Bio coming soon.</p></div>
+      <div class="team-card"><div class="team-avatar">DIR</div><h4>Add Name</h4><div class="team-role">Director of Healthcare Solutions</div><p>Bio coming soon.</p></div>
+      <div class="team-card"><div class="team-avatar">DIR</div><h4>Add Name</h4><div class="team-role">Director of Security Solutions</div><p>Bio coming soon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-soft" id="partners">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Manufacturer Partners</span>
+      <h2>Our Partners</h2>
+      <p style="color:var(--gray);">We're proud to offer products from the best manufacturers in the industry across telecommunications, healthcare, and security.</p>
+    </div>
+    <div class="partner-groups">
+      <div class="partner-group">
+        <h4>Telecommunication Solutions</h4>
+        <ul class="partner-list">
+          <li>Superior Essex</li><li>Corning</li><li>Belden</li><li>Ortronics</li>
+          <li>Legrand</li><li>CommScope</li><li>Chatsworth Products (CPI)</li><li>Hubbell</li>
+        </ul>
+      </div>
+      <div class="partner-group">
+        <h4>Healthcare Solutions</h4>
+        <ul class="partner-list">
+          <li>Ascom</li><li>Primex</li><li>Sonitor</li><li>Midmark</li><li>Spectralink</li>
+        </ul>
+      </div>
+      <div class="partner-group">
+        <h4>Security Solutions</h4>
+        <ul class="partner-list">
+          <li>Open Options</li><li>Lenel S2</li><li>Tyco | American Dynamics</li><li>Verkada</li>
+          <li>Hanwha Samsung</li><li>Allegion</li><li>ASSA ABLOY</li><li>Milestone</li><li>Aiphone</li><li>Avigilon</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -457,35 +563,71 @@
     <div class="section-head center">
       <span class="eyebrow">Our Work</span>
       <h2>Featured Projects</h2>
-      <p style="color:var(--gray);">A sample of the developments, hotels, and facilities DMI Technologies has helped connect. Each project links out to the client.</p>
+      <p style="color:var(--gray);">A sample of the healthcare systems, campuses, hotels, and developments DMI Technologies has helped connect.</p>
     </div>
-    <div class="project-scroller">
-      <a class="project-card" href="#" target="_blank" rel="noopener">
-        <div class="project-thumb">Kindred Resort</div>
-        <div class="project-info"><h4>Kindred Resort</h4><span>Keystone, CO</span></div>
-      </a>
-      <a class="project-card" href="#" target="_blank" rel="noopener">
-        <div class="project-thumb">Hotel Drover</div>
-        <div class="project-info"><h4>Hotel Drover</h4><span>Fort Worth, TX</span></div>
-      </a>
-      <a class="project-card" href="#" target="_blank" rel="noopener">
-        <div class="project-thumb">The Sinclair Hotel</div>
-        <div class="project-info"><h4>The Sinclair Hotel</h4><span>Fort Worth, TX</span></div>
-      </a>
-      <a class="project-card" href="#" target="_blank" rel="noopener">
-        <div class="project-thumb">Eagle County Airport</div>
-        <div class="project-info"><h4>Eagle County Regional Airport</h4><span>Gypsum, CO</span></div>
-      </a>
-      <a class="project-card" href="#" target="_blank" rel="noopener">
-        <div class="project-thumb">Transplace</div>
-        <div class="project-info"><h4>Transplace</h4><span>Frisco, TX</span></div>
-      </a>
-      <a class="project-card" href="#" target="_blank" rel="noopener">
-        <div class="project-thumb">BofA Plaza</div>
-        <div class="project-info"><h4>Bank of America Plaza Reno &ndash; Dallas</h4><span>Dallas, TX</span></div>
-      </a>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="commercial">Commercial</button>
+      <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+      <button class="filter-btn" data-filter="education">Education</button>
+      <button class="filter-btn" data-filter="multitenant">Multi-Tenant</button>
     </div>
-    <p class="project-note">Note: project links and photography are placeholders &mdash; swap in real client links/images before launch.</p>
+    <div class="project-grid" id="projectGrid">
+      <!-- Commercial -->
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Kindred Resort</div></div><div class="project-info"><h4>Kindred Resort</h4><span>Keystone, CO</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Hotel Drover</div></div><div class="project-info"><h4>Hotel Drover</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">The Sinclair Hotel</div></div><div class="project-info"><h4>The Sinclair Hotel</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Eagle County Airport</div></div><div class="project-info"><h4>Eagle County Regional Airport</h4><span>Gypsum, CO</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Transplace</div></div><div class="project-info"><h4>Transplace</h4><span>Frisco, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">BofA Plaza</div></div><div class="project-info"><h4>Bank of America Plaza Reno &ndash; Dallas</h4><span>Dallas, TX</span></div></div>
+      <!-- Healthcare -->
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">The Legacy at Midtown Park</div></div><div class="project-info"><h4>The Legacy at Midtown Park</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">UT Southwestern</div></div><div class="project-info"><h4>UT Southwestern</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Coryell Health</div></div><div class="project-info"><h4>Coryell Health</h4><span>Gatesville, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Children's Medical Center</div></div><div class="project-info"><h4>Children's Medical Center</h4><span>Plano, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Children's Medical Center</div></div><div class="project-info"><h4>Children's Medical Center</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Cook Children's</div></div><div class="project-info"><h4>Cook Children's Medical Center</h4><span>Fort Worth, TX</span></div></div>
+      <!-- Education -->
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">Lewisville ISD</div></div><div class="project-info"><h4>Lewisville ISD District Security Renovation</h4><span>Multiple Locations</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">AISD Seguin High School</div></div><div class="project-info"><h4>AISD Seguin High School</h4><span>Arlington, TX</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">Nolan Catholic High School</div></div><div class="project-info"><h4>Nolan Catholic High School</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">UTD Math &amp; Science</div></div><div class="project-info"><h4>UTD Math &amp; Science</h4><span>Dallas, TX</span></div></div>
+      <!-- Multi-Tenant -->
+      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><div class="project-thumb">Touchmark at Emerald Lake</div></div><div class="project-info"><h4>Touchmark at Emerald Lake</h4><span>McKinney, TX</span></div></div>
+      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><div class="project-thumb">1401 Elm</div></div><div class="project-info"><h4>1401 Elm</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><div class="project-thumb">AMLI Fountain Place</div></div><div class="project-info"><h4>AMLI Fountain Place</h4><span>Dallas, TX</span></div></div>
+    </div>
+    <p class="project-note">Note: project thumbnails are design placeholders &mdash; swap in real project photography before launch.</p>
+  </div>
+</section>
+
+<section class="bg-navy" id="careers">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow" style="color:var(--orange);">Join Us</span>
+      <h2>Careers at DMI</h2>
+      <p style="color:#b8c4d0;">We're growing across Texas and Colorado. Explore open roles below.</p>
+    </div>
+    <div class="career-grid">
+      <div class="career-card">
+        <h4>Business Development Manager &ndash; Healthcare</h4>
+        <div class="career-tags"><span>Healthcare</span><span>Sales</span></div>
+        <div class="career-loc">Austin, San Antonio</div>
+        <a href="#">More Details &rarr;</a>
+      </div>
+      <div class="career-card">
+        <h4>Healthcare Engineer</h4>
+        <div class="career-tags"><span>Field</span><span>Healthcare</span></div>
+        <div class="career-loc">DFW Metroplex</div>
+        <a href="#">More Details &rarr;</a>
+      </div>
+      <div class="career-card">
+        <h4>Cable Technician</h4>
+        <div class="career-tags"><span>Field</span><span>Technician</span></div>
+        <div class="career-loc">Denver Metroplex, DFW Metroplex</div>
+        <a href="#">More Details &rarr;</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -500,36 +642,60 @@
         <li><div class="ico">TX</div><div><strong>Regions Served</strong>Texas &amp; Colorado</div></li>
         <li><div class="ico">Lic</div><div><strong>Texas License</strong>B18364 &mdash; Dept. of Public Safety Regulatory Services Division</div></li>
       </ul>
-      <div class="service-ticket-cta" id="service-ticket">
-        <p><strong>Existing client?</strong><br>Submit a service ticket instead and our team will follow up on your issue directly.</p>
-        <a href="#" class="btn btn-dark-outline">Open Service Ticket</a>
-      </div>
     </div>
-    <form onsubmit="return false;">
-      <div class="form-row">
-        <div>
-          <label for="name">Name *</label>
-          <input id="name" type="text" placeholder="E.g. John" required>
-        </div>
-        <div>
-          <label for="email">Email Address *</label>
-          <input id="email" type="email" placeholder="E.g. john@doe.com" required>
-        </div>
+    <div class="form-card">
+      <div class="form-tabs">
+        <button class="form-tab active" data-target="formGeneral">General Inquiry</button>
+        <button class="form-tab" data-target="formTicket">Service Ticket</button>
       </div>
-      <div class="form-row">
-        <div>
-          <label for="phone">Phone Number *</label>
-          <input id="phone" type="tel" placeholder="E.g. +1 3004005000" required>
+
+      <form id="formGeneral" class="active" onsubmit="return false;">
+        <div class="form-row">
+          <div><label for="name">Name *</label><input id="name" type="text" placeholder="E.g. John" required></div>
+          <div><label for="email">Email Address *</label><input id="email" type="email" placeholder="E.g. john@doe.com" required></div>
         </div>
-        <div>
-          <label for="org">Organization</label>
-          <input id="org" type="text" placeholder="Organization Name">
+        <div class="form-row">
+          <div><label for="phone">Phone Number *</label><input id="phone" type="tel" placeholder="E.g. +1 3004005000" required></div>
+          <div><label for="org">Organization</label><input id="org" type="text" placeholder="Organization Name"></div>
         </div>
-      </div>
-      <label for="message">Message</label>
-      <textarea id="message" maxlength="180" placeholder="How can we help you today?"></textarea>
-      <button type="submit" class="btn btn-blue">Send Message</button>
-    </form>
+        <label for="message">Message</label>
+        <textarea id="message" maxlength="180" placeholder="How can we help you today?"></textarea>
+        <button type="submit" class="btn btn-blue">Send Message</button>
+      </form>
+
+      <form id="formTicket" onsubmit="return false;">
+        <label for="facility">Facility *</label>
+        <input id="facility" type="text" placeholder="E.g. Park Place" required>
+        <div class="form-row">
+          <div><label for="street">Street Address *</label><input id="street" type="text" placeholder="E.g. 505 Dr" required></div>
+          <div><label for="apt">Apartment, suite, etc</label><input id="apt" type="text" placeholder="Ste. 200"></div>
+        </div>
+        <div class="form-row">
+          <div><label for="city">City *</label><input id="city" type="text" placeholder="E.g. Fort Worth" required></div>
+          <div><label for="state">State/Province *</label><input id="state" type="text" placeholder="E.g. TX" required></div>
+        </div>
+        <div class="form-row">
+          <div><label for="zip">ZIP / Postal Code *</label><input id="zip" type="text" placeholder="E.g. 000000" required></div>
+          <div><label for="ticketEmail">Email *</label><input id="ticketEmail" type="email" placeholder="service@dmitechinc.com" required></div>
+        </div>
+        <label for="callback">Callback Number *</label>
+        <input id="callback" type="tel" placeholder="E.g. +1 3004005000" required>
+        <label for="serviceType">What kind of service is needed?</label>
+        <select id="serviceType">
+          <option>Choose One</option>
+          <option>Structured Cabling</option>
+          <option>Electronic Security</option>
+          <option>Nurse-Call</option>
+          <option>Mobility Solutions</option>
+          <option>Other</option>
+        </select>
+        <label for="issue">Issue *</label>
+        <textarea id="issue" maxlength="180" placeholder="Please briefly describe the issue." required></textarea>
+        <label for="po">PO / Work Order #</label>
+        <input id="po" type="text" placeholder="If Applicable">
+        <button type="submit" class="btn btn-orange">Submit Ticket</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -538,7 +704,7 @@
     <div>
       <div class="logo" style="margin-bottom:14px;">
         <span class="logo-mark">DMI</span>
-        <span>DMI Technologies<small>TECHNOLOGY&nbsp;INTEGRATION</small></span>
+        <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
       </div>
       <p style="max-width:280px;font-size:.9rem;">Women-owned structured cabling, electronic security, and technology integration company serving Texas and Colorado since 2005.</p>
     </div>
@@ -546,30 +712,32 @@
       <h4>Company</h4>
       <ul>
         <li><a href="#about">About Us</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Leadership Team</a></li>
+        <li><a href="#careers">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
     <div>
-      <h4>Services</h4>
+      <h4>Industries</h4>
       <ul>
-        <li><a href="#services">Structured Cabling</a></li>
-        <li><a href="#services">Electronic Security</a></li>
-        <li><a href="#services">Nurse-Call Systems</a></li>
-        <li><a href="#services">Mobility Solutions</a></li>
+        <li><a href="#industries" data-industry="commercial">Commercial</a></li>
+        <li><a href="#industries" data-industry="healthcare">Healthcare</a></li>
+        <li><a href="#industries" data-industry="education">Education</a></li>
+        <li><a href="#industries" data-industry="multitenant">Multi-Tenant</a></li>
       </ul>
     </div>
     <div>
       <h4>Get Help</h4>
       <ul>
-        <li><a href="#service-ticket">Schedule Service</a></li>
+        <li><a href="#contact" data-form="ticket" class="open-ticket">Schedule Service</a></li>
         <li><a href="#contact">Contact Sales</a></li>
+        <li><a href="#partners">Our Partners</a></li>
         <li>service@dmitechinc.com</li>
       </ul>
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>&copy; <span id="year"></span> DMI Technologies. All rights reserved.</span>
+    <span>&copy; <span id="year"></span> DMI Technologies.</span>
     <span>TX License #B18364 &middot; HUB / NCTRCA / WBENC Certified</span>
   </div>
 </footer>
@@ -581,9 +749,14 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  navLinks.querySelectorAll(':scope > a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  document.querySelectorAll('.has-dropdown > a').forEach(a=>{
+    a.addEventListener('click', e=>{
+      if(window.innerWidth<=980){ e.preventDefault(); a.parentElement.classList.toggle('open'); }
+    });
+  });
 
-  // tabs
+  // about tabs
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -593,11 +766,48 @@
     });
   });
 
+  // industry tabs
+  const industryTabs = document.querySelectorAll('.industry-tab');
+  function setIndustry(name){
+    industryTabs.forEach(b=>b.classList.toggle('active', b.dataset.ind===name));
+    document.querySelectorAll('.industry-panel').forEach(p=>p.classList.toggle('active', p.id==='ind-'+name));
+  }
+  industryTabs.forEach(btn => btn.addEventListener('click', () => setIndustry(btn.dataset.ind)));
+  document.querySelectorAll('[data-industry]').forEach(link=>{
+    link.addEventListener('click', ()=> setIndustry(link.dataset.industry));
+  });
+
+  // project filter
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('#projectGrid .project-card').forEach(card=>{
+        card.style.display = (f==='all' || card.dataset.cat===f) ? '' : 'none';
+      });
+    });
+  });
+
+  // contact form tabs
+  document.querySelectorAll('.form-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.form-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.form-card form').forEach(f=>f.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+  document.querySelectorAll('.open-ticket').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      document.querySelectorAll('.form-tab').forEach(t=>t.classList.toggle('active', t.dataset.target==='formTicket'));
+      document.querySelectorAll('.form-card form').forEach(f=>f.classList.toggle('active', f.id==='formTicket'));
+    });
+  });
+
   // back to top
   const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('show', window.scrollY > 500);
-  });
+  window.addEventListener('scroll', () => backToTop.classList.toggle('show', window.scrollY > 500));
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
