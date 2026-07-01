@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DMI Technologies | Enterprise Technology Integration</title>
 <meta name="description" content="DMI Technologies — women-owned enterprise technology integrator delivering structured cabling, electronic security, nurse-call, and mobility solutions across Texas and Colorado since 2005.">
+<script>
+  (function(){
+    var saved = localStorage.getItem('dmi-theme');
+    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 <style>
   :root{
     --navy:#070c15;
@@ -20,9 +27,26 @@
     --line:#e4e9ee;
     --bg-soft:#f5f7fa;
     --white:#ffffff;
+    --body-bg:#ffffff;
+    --surface:#ffffff;
+    --input-bg:#f7f9fb;
+    --card-shadow:rgba(20,40,60,.06);
     --radius:16px;
     --radius-sm:10px;
     --maxw:1240px;
+    color-scheme:light;
+  }
+  html[data-theme="dark"]{
+    --ink:#e7edf3;
+    --gray:#aab8c8;
+    --gray-light:#8494a8;
+    --line:#25324a;
+    --bg-soft:#0d1524;
+    --body-bg:#0a0f1a;
+    --surface:#121b2c;
+    --input-bg:#0b1220;
+    --card-shadow:rgba(0,0,0,.35);
+    color-scheme:dark;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -30,9 +54,10 @@
     margin:0;
     font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
     color:var(--ink);
-    background:var(--white);
+    background:var(--body-bg);
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
+    transition:background-color .2s ease, color .2s ease;
   }
   h1,h2,h3,h4{
     font-family:"Segoe UI",Arial,sans-serif;
@@ -109,6 +134,16 @@
   .dropdown a{display:block;padding:10px 14px;border-radius:8px;color:#cfd9e2;font-size:.87rem;font-weight:600;}
   .dropdown a:hover{background:rgba(245,130,31,.12);color:#fff;}
   .nav-cta{display:flex;gap:12px;align-items:center;}
+  .theme-toggle{
+    width:40px;height:40px;border-radius:50%;flex-shrink:0;
+    border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;
+  }
+  .theme-toggle:hover{background:rgba(255,255,255,.14);}
+  .theme-toggle svg{width:18px;height:18px;}
+  .theme-toggle .icon-sun{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-moon{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-sun{display:block;}
   .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;}
   @media(max-width:980px){
     .nav-links{
@@ -128,28 +163,19 @@
   .hero{
     position:relative;min-height:680px;display:flex;align-items:center;color:#fff;overflow:hidden;
     background:
-      linear-gradient(180deg, rgba(4,8,14,.6), rgba(4,8,14,.85)),
+      linear-gradient(180deg, rgba(4,8,14,.62), rgba(4,8,14,.88)),
+      url("images/backgrounds/hero.jpg"),
       linear-gradient(200deg,#3c4c5e 0%, #7a8ea1 35%, #b9c6d1 55%, #8194a5 75%, #3c4c5e 100%);
+    background-size:cover,cover,cover;
+    background-position:center,center,center;
+    background-repeat:no-repeat,no-repeat,no-repeat;
   }
   .hero-clouds{
-    position:absolute;inset:0;
+    position:absolute;inset:0;pointer-events:none;
     background:
-      radial-gradient(ellipse 60% 40% at 15% 20%, rgba(255,255,255,.25), transparent 60%),
-      radial-gradient(ellipse 50% 35% at 60% 10%, rgba(255,255,255,.18), transparent 60%),
-      radial-gradient(ellipse 70% 45% at 85% 30%, rgba(255,255,255,.2), transparent 60%);
-  }
-  .skyline{
-    position:absolute;left:0;right:0;bottom:0;height:44%;background:#070c15;
-    clip-path:polygon(
-      0% 100%, 0% 60%, 3% 60%, 3% 40%, 6% 40%, 6% 55%, 10% 55%, 10% 30%, 13% 30%,
-      13% 50%, 17% 50%, 17% 20%, 20% 20%, 20% 10%, 23% 10%, 23% 45%, 27% 45%,
-      27% 25%, 31% 25%, 31% 5%, 35% 5%, 35% 42%, 39% 42%, 39% 15%, 43% 15%,
-      43% 48%, 47% 48%, 47% 0%, 51% 0%, 51% 38%, 55% 38%, 55% 18%, 59% 18%,
-      59% 46%, 63% 46%, 63% 8%, 67% 8%, 67% 34%, 71% 34%, 71% 22%, 75% 22%,
-      75% 50%, 79% 50%, 79% 12%, 83% 12%, 83% 40%, 87% 40%, 87% 28%, 91% 28%,
-      91% 55%, 95% 55%, 95% 45%, 100% 45%, 100% 100%
-    );
-    opacity:.92;
+      radial-gradient(ellipse 60% 40% at 15% 20%, rgba(255,255,255,.2), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 60% 10%, rgba(255,255,255,.14), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 85% 30%, rgba(255,255,255,.16), transparent 60%);
   }
   .hero-inner{position:relative;z-index:2;padding:120px 28px 0;max-width:var(--maxw);margin:0 auto;}
   .hero h1{font-size:clamp(2.1rem,4.6vw,3.6rem);max-width:860px;text-shadow:0 4px 20px rgba(0,0,0,.4);}
@@ -169,7 +195,7 @@
   @media(max-width:800px){.kpi-grid{grid-template-columns:repeat(2,1fr);row-gap:20px;}.kpi-grid div{border-right:none;}}
 
   /* MARQUEE */
-  .marquee-wrap{background:var(--white);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;}
+  .marquee-wrap{background:var(--body-bg);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;}
   .marquee-label{text-align:center;color:var(--gray-light);font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:16px;}
   .marquee{display:flex;width:max-content;animation:scroll 38s linear infinite;}
   .marquee:hover{animation-play-state:paused;}
@@ -189,6 +215,22 @@
   .badge-icon.women{background:linear-gradient(135deg,#e0518c,#7b5ee0);}
   .badge span small{display:block;font-weight:500;color:#8b98a5;font-size:.75rem;}
 
+  /* MINI BANNERS (photo headers) */
+  .mini-banner{
+    position:relative;height:220px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(4,8,14,.4), rgba(4,8,14,.8)),
+      var(--banner-img, none),
+      linear-gradient(120deg,var(--navy),var(--navy-3));
+    background-size:cover,cover,cover;
+    background-position:center,center,center;
+    background-repeat:no-repeat,no-repeat,no-repeat;
+    transition:background-image .3s ease;
+  }
+  .mini-banner-inner{padding:0 28px 26px;max-width:var(--maxw);margin:0 auto;width:100%;}
+  .mini-banner .eyebrow{color:#ffb066;margin-bottom:.3em;}
+  .mini-banner h3{margin:0;font-size:1.6rem;text-shadow:0 4px 16px rgba(0,0,0,.4);}
+
   section{padding:104px 0;}
   .section-head{max-width:700px;margin-bottom:52px;}
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
@@ -199,9 +241,9 @@
   .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start;}
   .about-grid p{color:var(--gray);font-size:1.05rem;}
   .tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
-  .tab-btn{padding:.7em 1.3em;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;cursor:pointer;font-size:.88rem;transition:background .15s,color .15s;}
+  .tab-btn{padding:.7em 1.3em;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;cursor:pointer;font-size:.88rem;transition:background .15s,color .15s;}
   .tab-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .tab-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;color:var(--gray);box-shadow:0 10px 26px rgba(20,40,60,.06);}
+  .tab-panel{display:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;color:var(--gray);box-shadow:0 10px 26px var(--card-shadow);}
   .tab-panel.active{display:block;}
   .license-strip{margin-top:44px;background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;border-radius:var(--radius);padding:34px;text-align:center;}
   .license-strip p{margin:0;font-weight:600;color:#dce4ea;}
@@ -211,7 +253,7 @@
   .industry-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px;}
   .industry-tab{
     flex:1;min-width:150px;padding:16px 18px;border-radius:12px;border:1px solid var(--line);
-    background:#fff;cursor:pointer;text-align:left;transition:border-color .15s, box-shadow .15s;
+    background:var(--surface);cursor:pointer;text-align:left;transition:border-color .15s, box-shadow .15s;
   }
   .industry-tab:hover{box-shadow:0 8px 20px rgba(20,40,60,.08);}
   .industry-tab.active{border-color:var(--orange);box-shadow:0 8px 20px rgba(245,130,31,.15);}
@@ -221,8 +263,9 @@
   .industry-panel.active{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;background:var(--bg-soft);border-radius:var(--radius);padding:40px;}
   .industry-panel p{color:var(--gray);}
   .mini-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .mini-project{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .mini-project{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
   .mini-thumb{height:110px;background:linear-gradient(135deg,#5b7a91,#2e4356);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-size:.65rem;font-weight:700;text-align:center;padding:8px;text-transform:uppercase;letter-spacing:.04em;}
+  .mini-photo{width:100%;height:110px;object-fit:cover;display:block;}
   .mini-project-info{padding:12px 14px;}
   .mini-project-info h5{margin:0 0 2px;font-size:.85rem;}
   .mini-project-info span{color:var(--gray-light);font-size:.75rem;}
@@ -230,7 +273,7 @@
 
   /* TEAM */
   .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;}
-  .team-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;transition:transform .2s, box-shadow .2s;}
+  .team-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;transition:transform .2s, box-shadow .2s;}
   .team-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,40,60,.1);}
   .team-avatar{
     width:88px;height:88px;border-radius:50%;margin:0 auto 18px;
@@ -244,21 +287,23 @@
 
   /* PARTNERS */
   .partner-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .partner-group{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;}
+  .partner-group{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;}
   .partner-group h4{font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);border-bottom:2px solid var(--orange);padding-bottom:12px;margin-bottom:20px;}
   .partner-list{display:flex;flex-direction:column;gap:0;}
-  .partner-list li{list-style:none;padding:13px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:700;font-size:.95rem;}
+  .partner-list li{list-style:none;padding:13px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:700;font-size:.95rem;display:flex;align-items:center;}
   .partner-list li:last-child{border-bottom:none;}
+  .partner-logo{height:22px;width:auto;max-width:90px;object-fit:contain;margin-right:12px;flex-shrink:0;}
   @media(max-width:900px){.partner-groups{grid-template-columns:1fr;}}
 
   /* PROJECTS */
   .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
-  .filter-btn{padding:.6em 1.3em;border-radius:24px;border:1px solid var(--line);background:#fff;color:var(--gray);font-weight:700;font-size:.85rem;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+  .filter-btn{padding:.6em 1.3em;border-radius:24px;border:1px solid var(--line);background:var(--surface);color:var(--gray);font-weight:700;font-size:.85rem;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
   .filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
   .project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px;}
-  .project-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 18px rgba(20,40,60,.05);transition:transform .2s ease, box-shadow .2s ease;}
+  .project-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 18px var(--card-shadow);transition:transform .2s ease, box-shadow .2s ease;}
   .project-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(20,40,60,.12);}
   .project-thumb{height:160px;background:linear-gradient(135deg,#5b7a91,#2e4356);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.9);font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-align:center;padding:10px;}
+  .project-photo{width:100%;height:160px;object-fit:cover;display:block;}
   .project-tag{position:absolute;margin:12px;background:rgba(245,130,31,.92);color:#fff;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:20px;}
   .project-thumb-wrap{position:relative;}
   .project-info{padding:18px 20px;}
@@ -268,12 +313,12 @@
 
   /* CAREERS */
   .career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
-  .career-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:24px;}
-  .career-card h4{font-size:1.05rem;margin:0 0 8px;}
+  .career-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-left:4px solid var(--orange);border-radius:12px;padding:24px;color:#fff;}
+  .career-card h4{font-size:1.05rem;margin:0 0 8px;color:#fff;}
   .career-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
-  .career-tags span{background:var(--bg-soft);color:var(--gray);font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;}
-  .career-loc{color:var(--gray-light);font-size:.85rem;margin-bottom:12px;}
-  .career-card a{color:var(--blue);font-weight:700;font-size:.88rem;}
+  .career-tags span{background:rgba(255,255,255,.1);color:#dbe4ec;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:20px;}
+  .career-loc{color:#9fb0c0;font-size:.85rem;margin-bottom:12px;}
+  .career-card a{color:var(--orange);font-weight:700;font-size:.88rem;}
 
   /* CONTACT */
   .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
@@ -282,7 +327,7 @@
   .contact-list li{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px;color:var(--gray);}
   .contact-list .ico{width:42px;height:42px;border-radius:10px;background:rgba(46,122,181,.1);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:800;font-size:.78rem;}
   .contact-list strong{display:block;color:var(--ink);}
-  .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:0 10px 26px rgba(20,40,60,.06);}
+  .form-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:0 10px 26px var(--card-shadow);}
   .form-tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--bg-soft);padding:6px;border-radius:10px;}
   .form-tab{flex:1;text-align:center;padding:.65em 1em;border-radius:8px;font-weight:700;font-size:.85rem;color:var(--gray);cursor:pointer;border:none;background:none;}
   .form-tab.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(20,40,60,.1);}
@@ -291,7 +336,7 @@
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   label{display:block;font-size:.85rem;font-weight:700;margin:16px 0 6px;color:var(--ink);}
   form .form-row label{margin-top:0;}
-  input,select,textarea{width:100%;padding:.75em .9em;border:1px solid var(--line);border-radius:8px;background:#f7f9fb;font-size:.95rem;font-family:inherit;color:var(--ink);}
+  input,select,textarea{width:100%;padding:.75em .9em;border:1px solid var(--line);border-radius:8px;background:var(--input-bg);font-size:.95rem;font-family:inherit;color:var(--ink);}
   input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff;}
   textarea{resize:vertical;min-height:90px;}
   form .btn{margin-top:22px;width:100%;justify-content:center;border:none;}
@@ -321,7 +366,8 @@
 <header>
   <nav>
     <a href="#home" class="logo">
-      <span class="logo-mark">DMI</span>
+      <img src="images/logo/logo.png" alt="DMI Technologies" style="height:38px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="logo-mark" style="display:none;">DMI</span>
       <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -350,13 +396,16 @@
     <div class="nav-cta">
       <a href="#contact" data-form="ticket" class="btn btn-orange btn-sm open-ticket">Schedule Service</a>
     </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
   </nav>
 </header>
 
 <section class="hero" id="home">
   <div class="hero-clouds"></div>
-  <div class="skyline"></div>
   <div class="hero-inner">
     <span class="eyebrow" style="color:#ffb066;">Serving Texas &amp; Colorado Since 2005</span>
     <h1>Enterprise Technology Integration for Mission-Critical Facilities.</h1>
@@ -401,6 +450,12 @@
   </div>
 </div>
 
+<div class="mini-banner" style="--banner-img:url('images/backgrounds/about.jpg');">
+  <div class="mini-banner-inner">
+    <span class="eyebrow">Company</span>
+    <h3>About DMI Technologies</h3>
+  </div>
+</div>
 <section id="about">
   <div class="container about-grid">
     <div>
@@ -434,6 +489,12 @@
   </div>
 </section>
 
+<div class="mini-banner" id="industriesBanner" style="--banner-img:url('images/backgrounds/industries-commercial.jpg');">
+  <div class="mini-banner-inner">
+    <span class="eyebrow">What We Do</span>
+    <h3 id="industriesBannerLabel">Commercial Solutions</h3>
+  </div>
+</div>
 <section class="bg-soft" id="industries">
   <div class="container">
     <div class="section-head center">
@@ -457,9 +518,9 @@
         <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
       </div>
       <div class="mini-projects">
-        <div class="mini-project"><div class="mini-thumb">Hotel Drover</div><div class="mini-project-info"><h5>Hotel Drover</h5><span>Fort Worth, TX</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">Kindred Resort</div><div class="mini-project-info"><h5>Kindred Resort</h5><span>Keystone, CO</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">Sinclair Hotel</div><div class="mini-project-info"><h5>The Sinclair Hotel</h5><span>Fort Worth, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/hotel-drover.jpg" alt="Hotel Drover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Hotel Drover</div><div class="mini-project-info"><h5>Hotel Drover</h5><span>Fort Worth, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/kindred-resort.jpg" alt="Kindred Resort" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Kindred Resort</div><div class="mini-project-info"><h5>Kindred Resort</h5><span>Keystone, CO</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/sinclair-hotel.jpg" alt="The Sinclair Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Sinclair Hotel</div><div class="mini-project-info"><h5>The Sinclair Hotel</h5><span>Fort Worth, TX</span></div></div>
       </div>
     </div>
 
@@ -471,9 +532,9 @@
         <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
       </div>
       <div class="mini-projects">
-        <div class="mini-project"><div class="mini-thumb">UT Southwestern</div><div class="mini-project-info"><h5>UT Southwestern</h5><span>Dallas, TX</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">Cook Children's</div><div class="mini-project-info"><h5>Cook Children's Medical Center</h5><span>Fort Worth, TX</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">Coryell Health</div><div class="mini-project-info"><h5>Coryell Health</h5><span>Gatesville, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/ut-southwestern.jpg" alt="UT Southwestern" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">UT Southwestern</div><div class="mini-project-info"><h5>UT Southwestern</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/cook-childrens-medical-center.jpg" alt="Cook Children's Medical Center" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Cook Children's</div><div class="mini-project-info"><h5>Cook Children's Medical Center</h5><span>Fort Worth, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/coryell-health.jpg" alt="Coryell Health" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Coryell Health</div><div class="mini-project-info"><h5>Coryell Health</h5><span>Gatesville, TX</span></div></div>
       </div>
     </div>
 
@@ -485,9 +546,9 @@
         <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
       </div>
       <div class="mini-projects">
-        <div class="mini-project"><div class="mini-thumb">Lewisville ISD</div><div class="mini-project-info"><h5>Lewisville ISD Security Renovation</h5><span>Multiple Locations</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">AISD Seguin HS</div><div class="mini-project-info"><h5>AISD Seguin High School</h5><span>Arlington, TX</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">UTD Math &amp; Science</div><div class="mini-project-info"><h5>UTD Math &amp; Science</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/lewisville-isd.jpg" alt="Lewisville ISD Security Renovation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Lewisville ISD</div><div class="mini-project-info"><h5>Lewisville ISD Security Renovation</h5><span>Multiple Locations</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/aisd-seguin-high-school.jpg" alt="AISD Seguin High School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">AISD Seguin HS</div><div class="mini-project-info"><h5>AISD Seguin High School</h5><span>Arlington, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/utd-math-science.jpg" alt="UTD Math &amp; Science" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">UTD Math &amp; Science</div><div class="mini-project-info"><h5>UTD Math &amp; Science</h5><span>Dallas, TX</span></div></div>
       </div>
     </div>
 
@@ -499,9 +560,9 @@
         <a href="#contact" class="btn btn-blue btn-sm">Contact Sales</a>
       </div>
       <div class="mini-projects">
-        <div class="mini-project"><div class="mini-thumb">1401 Elm</div><div class="mini-project-info"><h5>1401 Elm</h5><span>Dallas, TX</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">AMLI Fountain Place</div><div class="mini-project-info"><h5>AMLI Fountain Place</h5><span>Dallas, TX</span></div></div>
-        <div class="mini-project"><div class="mini-thumb">Touchmark</div><div class="mini-project-info"><h5>Touchmark at Emerald Lake</h5><span>McKinney, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/1401-elm.jpg" alt="1401 Elm" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">1401 Elm</div><div class="mini-project-info"><h5>1401 Elm</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/amli-fountain-place.jpg" alt="AMLI Fountain Place" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">AMLI Fountain Place</div><div class="mini-project-info"><h5>AMLI Fountain Place</h5><span>Dallas, TX</span></div></div>
+        <div class="mini-project"><img class="mini-photo" src="images/projects/touchmark-emerald-lake.jpg" alt="Touchmark at Emerald Lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="mini-thumb" style="display:none;">Touchmark</div><div class="mini-project-info"><h5>Touchmark at Emerald Lake</h5><span>McKinney, TX</span></div></div>
       </div>
     </div>
   </div>
@@ -537,21 +598,21 @@
       <div class="partner-group">
         <h4>Telecommunication Solutions</h4>
         <ul class="partner-list">
-          <li>Superior Essex</li><li>Corning</li><li>Belden</li><li>Ortronics</li>
-          <li>Legrand</li><li>CommScope</li><li>Chatsworth Products (CPI)</li><li>Hubbell</li>
+          <li><img class="partner-logo" src="images/partners/superior-essex.png" alt="Superior Essex logo" onerror="this.remove()">Superior Essex</li><li><img class="partner-logo" src="images/partners/corning.png" alt="Corning logo" onerror="this.remove()">Corning</li><li><img class="partner-logo" src="images/partners/belden.png" alt="Belden logo" onerror="this.remove()">Belden</li><li><img class="partner-logo" src="images/partners/ortronics.png" alt="Ortronics logo" onerror="this.remove()">Ortronics</li>
+          <li><img class="partner-logo" src="images/partners/legrand.png" alt="Legrand logo" onerror="this.remove()">Legrand</li><li><img class="partner-logo" src="images/partners/commscope.png" alt="CommScope logo" onerror="this.remove()">CommScope</li><li><img class="partner-logo" src="images/partners/cpi.png" alt="Chatsworth Products (CPI) logo" onerror="this.remove()">Chatsworth Products (CPI)</li><li><img class="partner-logo" src="images/partners/hubbell.png" alt="Hubbell logo" onerror="this.remove()">Hubbell</li>
         </ul>
       </div>
       <div class="partner-group">
         <h4>Healthcare Solutions</h4>
         <ul class="partner-list">
-          <li>Ascom</li><li>Primex</li><li>Sonitor</li><li>Midmark</li><li>Spectralink</li>
+          <li><img class="partner-logo" src="images/partners/ascom.png" alt="Ascom logo" onerror="this.remove()">Ascom</li><li><img class="partner-logo" src="images/partners/primex.png" alt="Primex logo" onerror="this.remove()">Primex</li><li><img class="partner-logo" src="images/partners/sonitor.png" alt="Sonitor logo" onerror="this.remove()">Sonitor</li><li><img class="partner-logo" src="images/partners/midmark.png" alt="Midmark logo" onerror="this.remove()">Midmark</li><li><img class="partner-logo" src="images/partners/spectralink.png" alt="Spectralink logo" onerror="this.remove()">Spectralink</li>
         </ul>
       </div>
       <div class="partner-group">
         <h4>Security Solutions</h4>
         <ul class="partner-list">
-          <li>Open Options</li><li>Lenel S2</li><li>Tyco | American Dynamics</li><li>Verkada</li>
-          <li>Hanwha Samsung</li><li>Allegion</li><li>ASSA ABLOY</li><li>Milestone</li><li>Aiphone</li><li>Avigilon</li>
+          <li><img class="partner-logo" src="images/partners/open-options.png" alt="Open Options logo" onerror="this.remove()">Open Options</li><li><img class="partner-logo" src="images/partners/lenel-s2.png" alt="Lenel S2 logo" onerror="this.remove()">Lenel S2</li><li><img class="partner-logo" src="images/partners/tyco-american-dynamics.png" alt="Tyco | American Dynamics logo" onerror="this.remove()">Tyco | American Dynamics</li><li><img class="partner-logo" src="images/partners/verkada.png" alt="Verkada logo" onerror="this.remove()">Verkada</li>
+          <li><img class="partner-logo" src="images/partners/hanwha-samsung.png" alt="Hanwha Samsung logo" onerror="this.remove()">Hanwha Samsung</li><li><img class="partner-logo" src="images/partners/allegion.png" alt="Allegion logo" onerror="this.remove()">Allegion</li><li><img class="partner-logo" src="images/partners/assa-abloy.png" alt="ASSA ABLOY logo" onerror="this.remove()">ASSA ABLOY</li><li><img class="partner-logo" src="images/partners/milestone.png" alt="Milestone logo" onerror="this.remove()">Milestone</li><li><img class="partner-logo" src="images/partners/aiphone.png" alt="Aiphone logo" onerror="this.remove()">Aiphone</li><li><img class="partner-logo" src="images/partners/avigilon.png" alt="Avigilon logo" onerror="this.remove()">Avigilon</li>
         </ul>
       </div>
     </div>
@@ -574,33 +635,39 @@
     </div>
     <div class="project-grid" id="projectGrid">
       <!-- Commercial -->
-      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Kindred Resort</div></div><div class="project-info"><h4>Kindred Resort</h4><span>Keystone, CO</span></div></div>
-      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Hotel Drover</div></div><div class="project-info"><h4>Hotel Drover</h4><span>Fort Worth, TX</span></div></div>
-      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">The Sinclair Hotel</div></div><div class="project-info"><h4>The Sinclair Hotel</h4><span>Fort Worth, TX</span></div></div>
-      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Eagle County Airport</div></div><div class="project-info"><h4>Eagle County Regional Airport</h4><span>Gypsum, CO</span></div></div>
-      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">Transplace</div></div><div class="project-info"><h4>Transplace</h4><span>Frisco, TX</span></div></div>
-      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><div class="project-thumb">BofA Plaza</div></div><div class="project-info"><h4>Bank of America Plaza Reno &ndash; Dallas</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><img class="project-photo" src="images/projects/kindred-resort.jpg" alt="Kindred Resort" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Kindred Resort</div></div><div class="project-info"><h4>Kindred Resort</h4><span>Keystone, CO</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><img class="project-photo" src="images/projects/hotel-drover.jpg" alt="Hotel Drover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Hotel Drover</div></div><div class="project-info"><h4>Hotel Drover</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><img class="project-photo" src="images/projects/sinclair-hotel.jpg" alt="The Sinclair Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">The Sinclair Hotel</div></div><div class="project-info"><h4>The Sinclair Hotel</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><img class="project-photo" src="images/projects/eagle-county-airport.jpg" alt="Eagle County Regional Airport" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Eagle County Airport</div></div><div class="project-info"><h4>Eagle County Regional Airport</h4><span>Gypsum, CO</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><img class="project-photo" src="images/projects/transplace.jpg" alt="Transplace" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Transplace</div></div><div class="project-info"><h4>Transplace</h4><span>Frisco, TX</span></div></div>
+      <div class="project-card" data-cat="commercial"><div class="project-thumb-wrap"><span class="project-tag">Commercial</span><img class="project-photo" src="images/projects/boa-plaza-dallas.jpg" alt="Bank of America Plaza Reno - Dallas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">BofA Plaza</div></div><div class="project-info"><h4>Bank of America Plaza Reno &ndash; Dallas</h4><span>Dallas, TX</span></div></div>
       <!-- Healthcare -->
-      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">The Legacy at Midtown Park</div></div><div class="project-info"><h4>The Legacy at Midtown Park</h4><span>Dallas, TX</span></div></div>
-      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">UT Southwestern</div></div><div class="project-info"><h4>UT Southwestern</h4><span>Dallas, TX</span></div></div>
-      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Coryell Health</div></div><div class="project-info"><h4>Coryell Health</h4><span>Gatesville, TX</span></div></div>
-      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Children's Medical Center</div></div><div class="project-info"><h4>Children's Medical Center</h4><span>Plano, TX</span></div></div>
-      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Children's Medical Center</div></div><div class="project-info"><h4>Children's Medical Center</h4><span>Dallas, TX</span></div></div>
-      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><div class="project-thumb">Cook Children's</div></div><div class="project-info"><h4>Cook Children's Medical Center</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><img class="project-photo" src="images/projects/legacy-midtown-park.jpg" alt="The Legacy at Midtown Park" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">The Legacy at Midtown Park</div></div><div class="project-info"><h4>The Legacy at Midtown Park</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><img class="project-photo" src="images/projects/ut-southwestern.jpg" alt="UT Southwestern" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">UT Southwestern</div></div><div class="project-info"><h4>UT Southwestern</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><img class="project-photo" src="images/projects/coryell-health.jpg" alt="Coryell Health" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Coryell Health</div></div><div class="project-info"><h4>Coryell Health</h4><span>Gatesville, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><img class="project-photo" src="images/projects/childrens-medical-center-plano.jpg" alt="Children's Medical Center - Plano" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Children's Medical Center</div></div><div class="project-info"><h4>Children's Medical Center</h4><span>Plano, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><img class="project-photo" src="images/projects/childrens-medical-center-dallas.jpg" alt="Children's Medical Center - Dallas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Children's Medical Center</div></div><div class="project-info"><h4>Children's Medical Center</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="healthcare"><div class="project-thumb-wrap"><span class="project-tag">Healthcare</span><img class="project-photo" src="images/projects/cook-childrens-medical-center.jpg" alt="Cook Children's Medical Center" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Cook Children's</div></div><div class="project-info"><h4>Cook Children's Medical Center</h4><span>Fort Worth, TX</span></div></div>
       <!-- Education -->
-      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">Lewisville ISD</div></div><div class="project-info"><h4>Lewisville ISD District Security Renovation</h4><span>Multiple Locations</span></div></div>
-      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">AISD Seguin High School</div></div><div class="project-info"><h4>AISD Seguin High School</h4><span>Arlington, TX</span></div></div>
-      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">Nolan Catholic High School</div></div><div class="project-info"><h4>Nolan Catholic High School</h4><span>Fort Worth, TX</span></div></div>
-      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><div class="project-thumb">UTD Math &amp; Science</div></div><div class="project-info"><h4>UTD Math &amp; Science</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><img class="project-photo" src="images/projects/lewisville-isd.jpg" alt="Lewisville ISD District Security Renovation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Lewisville ISD</div></div><div class="project-info"><h4>Lewisville ISD District Security Renovation</h4><span>Multiple Locations</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><img class="project-photo" src="images/projects/aisd-seguin-high-school.jpg" alt="AISD Seguin High School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">AISD Seguin High School</div></div><div class="project-info"><h4>AISD Seguin High School</h4><span>Arlington, TX</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><img class="project-photo" src="images/projects/nolan-catholic-high-school.jpg" alt="Nolan Catholic High School" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Nolan Catholic High School</div></div><div class="project-info"><h4>Nolan Catholic High School</h4><span>Fort Worth, TX</span></div></div>
+      <div class="project-card" data-cat="education"><div class="project-thumb-wrap"><span class="project-tag">Education</span><img class="project-photo" src="images/projects/utd-math-science.jpg" alt="UTD Math &amp; Science" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">UTD Math &amp; Science</div></div><div class="project-info"><h4>UTD Math &amp; Science</h4><span>Dallas, TX</span></div></div>
       <!-- Multi-Tenant -->
-      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><div class="project-thumb">Touchmark at Emerald Lake</div></div><div class="project-info"><h4>Touchmark at Emerald Lake</h4><span>McKinney, TX</span></div></div>
-      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><div class="project-thumb">1401 Elm</div></div><div class="project-info"><h4>1401 Elm</h4><span>Dallas, TX</span></div></div>
-      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><div class="project-thumb">AMLI Fountain Place</div></div><div class="project-info"><h4>AMLI Fountain Place</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><img class="project-photo" src="images/projects/touchmark-emerald-lake.jpg" alt="Touchmark at Emerald Lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">Touchmark at Emerald Lake</div></div><div class="project-info"><h4>Touchmark at Emerald Lake</h4><span>McKinney, TX</span></div></div>
+      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><img class="project-photo" src="images/projects/1401-elm.jpg" alt="1401 Elm" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">1401 Elm</div></div><div class="project-info"><h4>1401 Elm</h4><span>Dallas, TX</span></div></div>
+      <div class="project-card" data-cat="multitenant"><div class="project-thumb-wrap"><span class="project-tag">Multi-Tenant</span><img class="project-photo" src="images/projects/amli-fountain-place.jpg" alt="AMLI Fountain Place" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="project-thumb" style="display:none;">AMLI Fountain Place</div></div><div class="project-info"><h4>AMLI Fountain Place</h4><span>Dallas, TX</span></div></div>
     </div>
     <p class="project-note">Note: project thumbnails are design placeholders &mdash; swap in real project photography before launch.</p>
   </div>
 </section>
 
+<div class="mini-banner" style="--banner-img:url('images/backgrounds/careers.jpg');">
+  <div class="mini-banner-inner">
+    <span class="eyebrow">Company</span>
+    <h3>Join Us!</h3>
+  </div>
+</div>
 <section class="bg-navy" id="careers">
   <div class="container">
     <div class="section-head center">
@@ -631,6 +698,12 @@
   </div>
 </section>
 
+<div class="mini-banner" style="--banner-img:url('images/backgrounds/contact.jpg');">
+  <div class="mini-banner-inner">
+    <span class="eyebrow">Get In Touch</span>
+    <h3>Contact Us</h3>
+  </div>
+</div>
 <section class="bg-soft" id="contact">
   <div class="container contact-wrap">
     <div class="contact-info">
@@ -703,7 +776,8 @@
   <div class="container footer-grid">
     <div>
       <div class="logo" style="margin-bottom:14px;">
-        <span class="logo-mark">DMI</span>
+        <img src="images/logo/logo.png" alt="DMI Technologies" style="height:38px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="logo-mark" style="display:none;">DMI</span>
         <span>DMI Technologies<small>ENTERPRISE&nbsp;TECHNOLOGY&nbsp;INTEGRATION</small></span>
       </div>
       <p style="max-width:280px;font-size:.9rem;">Women-owned structured cabling, electronic security, and technology integration company serving Texas and Colorado since 2005.</p>
@@ -768,9 +842,22 @@
 
   // industry tabs
   const industryTabs = document.querySelectorAll('.industry-tab');
+  const industryMeta = {
+    commercial: { label: 'Commercial Solutions', img: 'images/backgrounds/industries-commercial.jpg' },
+    healthcare: { label: 'Healthcare Solutions', img: 'images/backgrounds/industries-healthcare.jpg' },
+    education: { label: 'Education Solutions', img: 'images/backgrounds/industries-education.jpg' },
+    multitenant: { label: 'Multi-Tenant Solutions', img: 'images/backgrounds/industries-multitenant.jpg' }
+  };
+  const industriesBanner = document.getElementById('industriesBanner');
+  const industriesBannerLabel = document.getElementById('industriesBannerLabel');
   function setIndustry(name){
     industryTabs.forEach(b=>b.classList.toggle('active', b.dataset.ind===name));
     document.querySelectorAll('.industry-panel').forEach(p=>p.classList.toggle('active', p.id==='ind-'+name));
+    const meta = industryMeta[name];
+    if(meta){
+      industriesBanner.style.setProperty('--banner-img', `url('${meta.img}')`);
+      industriesBannerLabel.textContent = meta.label;
+    }
   }
   industryTabs.forEach(btn => btn.addEventListener('click', () => setIndustry(btn.dataset.ind)));
   document.querySelectorAll('[data-industry]').forEach(link=>{
@@ -803,6 +890,14 @@
       document.querySelectorAll('.form-tab').forEach(t=>t.classList.toggle('active', t.dataset.target==='formTicket'));
       document.querySelectorAll('.form-card form').forEach(f=>f.classList.toggle('active', f.id==='formTicket'));
     });
+  });
+
+  // theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dmi-theme', next);
   });
 
   // back to top
