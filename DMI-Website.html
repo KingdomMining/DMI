@@ -1069,21 +1069,22 @@
   const matLinks = new THREE.LineBasicMaterial({ color:0xf5921f, transparent:true, opacity:0.30 });
   globe.add(new THREE.LineSegments(linkGeo, matLinks));
 
-  // soft round sprite so GL points render as glowing stars, not squares
+  // round star sprite: solid bright core + soft halo (round, never a box, always visible)
   function dotTexture(){
-    const c = document.createElement('canvas'); c.width = c.height = 32;
+    const c = document.createElement('canvas'); c.width = c.height = 64;
     const g = c.getContext('2d');
-    const grad = g.createRadialGradient(16,16,0,16,16,16);
+    const grad = g.createRadialGradient(32,32,0,32,32,32);
     grad.addColorStop(0,'rgba(255,255,255,1)');
-    grad.addColorStop(0.4,'rgba(255,255,255,.6)');
+    grad.addColorStop(0.45,'rgba(255,255,255,.95)');
+    grad.addColorStop(0.7,'rgba(255,255,255,.35)');
     grad.addColorStop(1,'rgba(255,255,255,0)');
-    g.fillStyle = grad; g.fillRect(0,0,32,32);
+    g.fillStyle = grad; g.fillRect(0,0,64,64);
     return new THREE.CanvasTexture(c);
   }
   const starTex = dotTexture();
 
   const nodeGeo = new THREE.BufferGeometry().setFromPoints(surfPts);
-  const matNodes = new THREE.PointsMaterial({ color:0xffc061, size:0.14, transparent:true, opacity:0.9, map:starTex, depthWrite:false });
+  const matNodes = new THREE.PointsMaterial({ color:0xffc061, size:0.3, transparent:true, opacity:0.95, map:starTex, depthWrite:false });
   globe.add(new THREE.Points(nodeGeo, matNodes));
 
   // ---------- ORBITING CABLE + PULSE ----------
@@ -1136,8 +1137,8 @@
     const mat = new THREE.PointsMaterial({ color, size, transparent:true, opacity, depthWrite:false, map:starTex });
     return new THREE.Points(geo, mat);
   }
-  const dustWarm = cloud(900, 30, 70, 0xffb066, 0.16, 0.7);
-  const dustCool = cloud(550, 34, 80, 0x6fb7ff, 0.13, 0.5);
+  const dustWarm = cloud(900, 22, 70, 0xffb066, 0.5, 0.9);
+  const dustCool = cloud(550, 26, 80, 0x6fb7ff, 0.4, 0.75);
   world.add(dustWarm); world.add(dustCool);
 
   // ---------- THEME ----------
@@ -1154,9 +1155,9 @@
     matRing2.color.set(dark ? 0x2ea6ff : 0x2563b0);
     matRing2.opacity = dark ? 0.22 : 0.35;
     dustWarm.material.color.set(dark ? 0xffb066 : 0xc2410c);
-    dustWarm.material.opacity = dark ? 0.7 : 0.45;
+    dustWarm.material.opacity = dark ? 0.95 : 0.6;
     dustCool.material.color.set(dark ? 0x6fb7ff : 0x1d4ed8);
-    dustCool.material.opacity = dark ? 0.5 : 0.35;
+    dustCool.material.opacity = dark ? 0.8 : 0.5;
   }
   applyTheme3D();
   new MutationObserver(applyTheme3D).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
