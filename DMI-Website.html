@@ -333,6 +333,10 @@
   @media(max-width:900px){.industry-panel.active{grid-template-columns:1fr;}.mini-projects{grid-template-columns:1fr 1fr;}}
 
   /* TEAM */
+  .team-group{margin-bottom:46px;}
+  .team-group:last-child{margin-bottom:0;}
+  .team-group-title{font-size:.92rem;text-transform:uppercase;letter-spacing:.09em;margin-bottom:20px;position:relative;padding-bottom:10px;}
+  .team-group-title::after{content:"";position:absolute;left:0;bottom:0;width:46px;height:3px;background:var(--grad-warm);border-radius:3px;}
   .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;}
   .team-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;text-align:center;transition:transform .22s, box-shadow .22s, border-color .22s;}
   .team-card:hover{transform:translateY(-6px);box-shadow:0 22px 44px var(--card-shadow-strong);border-color:rgba(245,130,31,.4);}
@@ -742,15 +746,30 @@
       <span class="eyebrow">Leadership</span>
       <h2>Meet the <span class="grad-text">Team</span></h2>
       <p>The people behind DMI's 20 years of connectivity solutions.</p>
-      <span class="placeholder-flag">Placeholder profiles &mdash; replace with real names, titles &amp; photos</span>
     </div>
-    <div class="team-grid reveal">
-      <div class="team-card"><div class="team-avatar">CEO</div><h4>Add Name</h4><div class="team-role">Founder &amp; CEO</div><p>Bio coming soon.</p></div>
-      <div class="team-card"><div class="team-avatar">COO</div><h4>Add Name</h4><div class="team-role">President &amp; COO</div><p>Bio coming soon.</p></div>
-      <div class="team-card"><div class="team-avatar">VP</div><h4>Add Name</h4><div class="team-role">VP of Sales</div><p>Bio coming soon.</p></div>
-      <div class="team-card"><div class="team-avatar">DIR</div><h4>Add Name</h4><div class="team-role">Director of Field Operations</div><p>Bio coming soon.</p></div>
-      <div class="team-card"><div class="team-avatar">DIR</div><h4>Add Name</h4><div class="team-role">Director of Healthcare Solutions</div><p>Bio coming soon.</p></div>
-      <div class="team-card"><div class="team-avatar">DIR</div><h4>Add Name</h4><div class="team-role">Director of Security Solutions</div><p>Bio coming soon.</p></div>
+    <div class="team-group reveal">
+      <h3 class="team-group-title">Executive Leadership</h3>
+      <div class="team-grid"><div class="team-card"><div class="team-avatar">ST</div><h4>Samentha Tiller</h4><div class="team-role">CEO / Owner</div></div><div class="team-card"><div class="team-avatar">AT</div><h4>Allen Throneberry</h4><div class="team-role">President</div></div><div class="team-card"><div class="team-avatar">DR</div><h4>Dena Rowland</h4><div class="team-role">CFO</div></div><div class="team-card"><div class="team-avatar">SS</div><h4>Samentha Sutter</h4><div class="team-role">Executive Business Manager</div></div></div>
+    </div>
+    <div class="team-group reveal">
+      <h3 class="team-group-title">Directors</h3>
+      <div class="team-grid"><div class="team-card"><div class="team-avatar">ST</div><h4>Spencer Throneberry</h4><div class="team-role">Director of Sales</div></div><div class="team-card"><div class="team-avatar">DK</div><h4>Daniel Knights</h4><div class="team-role">Director of Estimating</div></div><div class="team-card"><div class="team-avatar">TG</div><h4>Thomas Ganey</h4><div class="team-role">Business Development Director</div></div></div>
+    </div>
+    <div class="team-group reveal">
+      <h3 class="team-group-title">Healthcare Team</h3>
+      <div class="team-grid"><div class="team-card"><div class="team-avatar">RJ</div><h4>Rick Jenkins</h4><div class="team-role">Healthcare Director</div></div><div class="team-card"><div class="team-avatar">NH</div><h4>Nancy Henry</h4><div class="team-role">Healthcare Business Development Manager</div></div><div class="team-card"><div class="team-avatar">JL</div><h4>Jesus Lucena</h4><div class="team-role">Healthcare Service Manager</div></div><div class="team-card"><div class="team-avatar">JV</div><h4>James Villanueva</h4><div class="team-role">Healthcare Project Manager</div></div><div class="team-card"><div class="team-avatar">EN</div><h4>Eugene Nikoi</h4><div class="team-role">Healthcare Estimator</div></div></div>
+    </div>
+    <div class="team-group reveal">
+      <h3 class="team-group-title">Sales &amp; Accounts</h3>
+      <div class="team-grid"><div class="team-card"><div class="team-avatar">DL</div><h4>Daniel Long</h4><div class="team-role">Senior Account Executive</div></div><div class="team-card"><div class="team-avatar">TC</div><h4>Tyler Cox</h4><div class="team-role">Account Executive</div></div><div class="team-card"><div class="team-avatar">MC</div><h4>Maggie Cox</h4><div class="team-role">Account Executive</div></div></div>
+    </div>
+    <div class="team-group reveal">
+      <h3 class="team-group-title">Project Management &amp; Estimating</h3>
+      <div class="team-grid"><div class="team-card"><div class="team-avatar">KB</div><h4>Kevin Baker</h4><div class="team-role">Senior Project Manager</div></div><div class="team-card"><div class="team-avatar">CC</div><h4>Caleb Cobar</h4><div class="team-role">Division Project Manager</div></div><div class="team-card"><div class="team-avatar">DD</div><h4>Dedric Dyson</h4><div class="team-role">Project Manager</div></div><div class="team-card"><div class="team-avatar">JR</div><h4>Jason Roberts</h4><div class="team-role">Estimator</div></div></div>
+    </div>
+    <div class="team-group reveal">
+      <h3 class="team-group-title">Operations &amp; Field</h3>
+      <div class="team-grid"><div class="team-card"><div class="team-avatar">CW</div><h4>Chad West</h4><div class="team-role">Field Technician</div></div><div class="team-card"><div class="team-avatar">IH</div><h4>Imani Hampton</h4><div class="team-role">Administrative Assistant</div></div></div>
     </div>
   </div>
 </section>
