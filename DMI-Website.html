@@ -1176,7 +1176,8 @@
   }
   const R1 = 9.6;
   const ring1 = new THREE.Group();
-  ring1.rotation.set(1.9, 0.35, 0.5);
+  ring1.rotation.order = 'ZXY';
+  ring1.rotation.set(1.35, 0, -0.55);   // logo angle: sweeps up to the NW, returns from the SE
   globe.add(ring1);
   const matRing1 = new THREE.MeshBasicMaterial({ color:0xf5b301, transparent:true, opacity:0.85 });
   ring1.add(new THREE.Mesh(new THREE.TorusGeometry(R1, 0.05, 8, 220), matRing1));
@@ -1190,7 +1191,8 @@
 
   const R2 = 11.2;
   const ring2 = new THREE.Group();
-  ring2.rotation.set(-1.2, -0.5, 0.2);
+  ring2.rotation.order = 'ZXY';
+  ring2.rotation.set(1.12, 0, -0.85);   // moon ring: same NW-SE diagonal, slightly offset plane
   globe.add(ring2);
   const matRing2 = new THREE.MeshBasicMaterial({ color:0x2ea6ff, transparent:true, opacity:0.22 });
   ring2.add(new THREE.Mesh(new THREE.TorusGeometry(R2, 0.03, 8, 200), matRing2));
