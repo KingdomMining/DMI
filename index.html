@@ -204,8 +204,8 @@
 
   /* HERO — transparent stage over the global 3D scene */
   .hero{
-    position:relative;min-height:92vh;display:flex;align-items:center;color:#fff;overflow:hidden;
-    background:transparent;
+    position:relative;min-height:78vh;display:flex;align-items:center;color:#fff;overflow:hidden;
+    background:transparent;padding:0;
   }
   html[data-theme="light"] .hero{color:var(--ink);}
   html[data-theme="light"] .hero h1{text-shadow:none;}
@@ -217,7 +217,7 @@
   .hero-glow{position:absolute;z-index:1;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;}
   .hero-glow.a{width:520px;height:520px;background:radial-gradient(circle,rgba(245,130,31,.7),transparent 70%);top:-120px;right:-60px;}
   .hero-glow.b{width:460px;height:460px;background:radial-gradient(circle,rgba(46,166,255,.55),transparent 70%);bottom:-140px;left:-80px;}
-  .hero-inner{position:relative;z-index:3;padding:130px 28px 40px;max-width:var(--maxw);margin:0 auto;width:100%;}
+  .hero-inner{position:relative;z-index:3;padding:48px 28px 40px;max-width:var(--maxw);margin:0 auto;width:100%;}
   .hero-wordmark{width:min(380px,62vw);height:auto;margin-bottom:30px;filter:drop-shadow(0 10px 34px rgba(245,130,31,.28));}
   .hero-badge{
     display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:30px;margin-bottom:26px;
